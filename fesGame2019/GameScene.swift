@@ -30,13 +30,13 @@ class GameScene: SKScene {
         
         switch event.keyCode {
         case 13:
-            moveDistanceY += 5
+            moveDistanceY = 5
         case 0:
-            moveDistanceX -= 5
+            moveDistanceX = -5
         case 1:
-            moveDistanceY -= 5
+            moveDistanceY = -5
         case 2:
-            moveDistanceX += 5
+            moveDistanceX = 5
         default:
             break
         }
@@ -56,5 +56,6 @@ class GameScene: SKScene {
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         self.player.move(x: moveDistanceX, y: moveDistanceY)
+        self.player.update()
     }
 }

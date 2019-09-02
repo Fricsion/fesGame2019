@@ -41,6 +41,15 @@ class Player: SKSpriteNode {
         self.position.y += CGFloat(y)
     }
     
+    func setLifeIndicator() {
+        let lifeIndicator = LifeIndicator(health: 1, parent: self, color: NSColor.green, linewidth: 10, radius: 30)
+        self.gameScene.addChild(lifeIndicator)
+    }
+    
+    func update() {
+        setLifeIndicator()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
