@@ -58,6 +58,17 @@ class Player: SKSpriteNode {
 //    func updateLifeIndicator(health: Int) {
 //        lifeIndicator.position = self.position
 //    }
+    
+    func shoot() {
+        let bullet = SKShapeNode(circleOfRadius: 5)
+        bullet.fillColor = NSColor.yellow
+        bullet.position = self.position
+        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+        bullet.physicsBody?.affectedByGravity = false
+        bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
+        self.gameScene.addChild(bullet)
+    }
+    
     func update() {
 //        updateLifeIndicator(health: self.health)
     }

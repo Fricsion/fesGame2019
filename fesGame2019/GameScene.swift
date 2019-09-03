@@ -40,6 +40,9 @@ class GameScene: SKScene {
             moveDistanceY = -5
         case 2:
             moveDistanceX = 5
+        case 49:
+            player.shoot()
+            print("hello")
         default:
             break
         }
