@@ -17,15 +17,19 @@ class LifeIndicator: SKShapeNode {
         print(scene)
     }
     
-    init(health: CGFloat, parent: SKNode, color: NSColor, linewidth: CGFloat, radius: CGFloat) {
+    init(radius: Int) {
         let path = NSBezierPath.init()
-        path.appendArc(withCenter: NSPoint(x: parent.position.x, y: parent.position.y), radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi)*health, clockwise: true)
+        path.appendArc(withCenter: NSPoint(x: 0, y: 0), radius: CGFloat(radius), startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
         super.init()
         self.path = path.cgPath
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
+    }
+    
+    func update(parent: SKSpriteNode) {
+        self.position = parent.position
     }
 }
 

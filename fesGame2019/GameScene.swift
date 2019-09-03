@@ -11,18 +11,21 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    let player = Player(def_pos: CGPoint(x: 490.0, y: 400.0))
+    let player = Player(def_pos: CGPoint(x: 0.0, y: 0.0))
     var moveDistanceX = 0
     var moveDistanceY = 0
     
     override func didMove(to view: SKView) {
         
+        player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2)
         player.setScene(scene: self)
         self.addChild(player)
         
         let enemy = Enemy(def_pos: CGPoint(x: 0.0, y: 200.0))
         enemy.setScene(scene: self)
         self.addChild(enemy)
+        
+        _ = self.view?.bounds
 
     }
 

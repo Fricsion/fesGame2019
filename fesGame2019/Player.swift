@@ -17,6 +17,8 @@ class Player: SKSpriteNode {
         print(scene)
     }
     
+    var health = 1
+    
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "jelly")
@@ -24,7 +26,7 @@ class Player: SKSpriteNode {
             textures.append(atlas.textureNamed("jelly" + String(i)))
         }
         
-        super.init(texture: textures[0], color: NSColor.clear, size: CGSize(width: 40, height: 40))
+        super.init(texture: textures[2], color: NSColor.clear, size: CGSize(width: 40, height: 40))
         self.position = def_pos
         
         let animation = SKAction.animate(withNormalTextures: textures, timePerFrame: 1.0)
@@ -34,6 +36,9 @@ class Player: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = 0x1 << 1111
         self.physicsBody?.collisionBitMask = 0x1 << 1111
+        
+//        setLifeIndicator(health: 1)
+        
     }
     
     func move(x: Int, y: Int) {
@@ -41,13 +46,20 @@ class Player: SKSpriteNode {
         self.position.y += CGFloat(y)
     }
     
-    func setLifeIndicator() {
-        let lifeIndicator = LifeIndicator(health: 1, parent: self, color: NSColor.green, linewidth: 10, radius: 30)
-        self.gameScene.addChild(lifeIndicator)
-    }
-    
+//    let lifeIndicator: SKShapeNode
+//
+//    func setLifeIndicator(health: Int) {
+//        let path = NSBezierPath.init()
+//        path.appendArc(withCenter: NSPoint(x: 0, y: 0), radius: 30, startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
+//        let lifeIndicator = SKShapeNode(path: path.cgPath)
+//        lifeIndicator.position = self.position
+//    }
+//
+//    func updateLifeIndicator(health: Int) {
+//        lifeIndicator.position = self.position
+//    }
     func update() {
-        setLifeIndicator()
+//        updateLifeIndicator(health: self.health)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -55,3 +67,32 @@ class Player: SKSpriteNode {
     }
 
 }
+//
+//extension NSBezierPath {
+//
+//    var cgPath: CGPath {
+//        let path = CGMutablePath()
+//        var points = [CGPoint](repeating: .zero, count: 3)
+//        for i in 0 ..< self.elementCount {
+//            let type = self.element(at: i, associatedPoints: &points)
+//
+//            switch type {
+//            case .moveTo:
+//                path.move(to: points[0])
+//
+//            case .lineTo:
+//                path.addLine(to: points[0])
+//
+//            case .curveTo:
+//                path.addCurve(to: points[2], control1: points[0], control2: points[1])
+//
+//            case .closePath:
+//                path.closeSubpath()
+//
+//            @unknown default:
+//                break
+//            }
+//        }
+//        return path
+//    }
+//}

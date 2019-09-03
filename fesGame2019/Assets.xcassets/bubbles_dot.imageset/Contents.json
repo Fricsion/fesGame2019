@@ -2,6 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "bubbles_dot.png",
       "scale" : "1x"
     },
     {
