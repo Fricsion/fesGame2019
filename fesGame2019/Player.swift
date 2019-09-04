@@ -59,8 +59,10 @@ class Player: SKSpriteNode {
     }
     
     func die() {
-        
+        // 通常時のアニメーションを止める（消す）
         self.removeAllActions()
+        
+        // 死ぬときの砕けるアニメーション
         var dyingPlayer: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "jelly")
         for i in 4..<8 {
@@ -68,6 +70,11 @@ class Player: SKSpriteNode {
         }
         let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.4)
         self.run(dyingAnimation)
+        
+        // ゲームオーバー画面へ
+        let scene = GameoverScene(size: self.gameScene.scene!.size)
+        scene.scaleMode = SKSceneScaleMode.aspectFill
+        self.gameScene.view!.presentScene(scene)
     }
     
     func update() {

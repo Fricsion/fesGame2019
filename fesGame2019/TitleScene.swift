@@ -28,7 +28,7 @@ class TitleScene: SKScene {
 //        self.view!.layer!.insertSublayer(gradientLayer, at: 0)
 //
         let gametitle_str = SKLabelNode()
-        gametitle_str.text = "Jellies of War"
+        gametitle_str.text = "Jelly of War"
         gametitle_str.fontSize = 40
         gametitle_str.fontName = "Chalkduster"
         gametitle_str.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2)
@@ -40,6 +40,7 @@ class TitleScene: SKScene {
     }
     
     func generateBubble() {
+        // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが……
         var bubbleTextures: [SKTexture] = []
         let bubbleAtlas = SKTextureAtlas(named: "bubble")
         for i in 1...3 {
@@ -62,8 +63,8 @@ class TitleScene: SKScene {
     }
     
     override func keyUp(with event: NSEvent) {
+        // スペースキーを押すことでゲームが開始される
         if event.keyCode == 49 {
-   
             let scene = GameScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
             self.view!.presentScene(scene)
