@@ -29,15 +29,14 @@ class Player: SKSpriteNode {
         super.init(texture: textures[2], color: NSColor.clear, size: CGSize(width: 40, height: 40))
         self.position = def_pos
         
-        let animation = SKAction.animate(with: textures, timePerFrame: 1.0)
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation))
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 20)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.categoryBitMask = 0x1 << 1111
-        self.physicsBody?.collisionBitMask = 0x1 << 1111
-        
-//        setLifeIndicator(health: 1)
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = 0b1111
+        self.physicsBody?.collisionBitMask = 0b1111
         
     }
     
@@ -46,18 +45,32 @@ class Player: SKSpriteNode {
         self.position.y += CGFloat(y)
     }
     
+    
+    
     func shoot() {
         let bullet = SKShapeNode(circleOfRadius: 5)
         bullet.fillColor = NSColor.yellow
         bullet.position = self.position
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
         bullet.physicsBody?.affectedByGravity = false
+        bullet.physicsBody?.categoryBitMask = 0b0001
         bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
         self.gameScene.addChild(bullet)
     }
     
+    func die() {
+        
+        self.removeAllActions()
+        var dyingPlayer: [SKTexture] = []
+        let atlas = SKTextureAtlas(named: "jelly")
+        for i in 4..<8 {
+            dyingPlayer.append(atlas.textureNamed("jelly"+String(i)))
+        }
+        let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.4)
+        self.run(dyingAnimation)
+    }
+    
     func update() {
-//        updateLifeIndicator(health: self.health)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -65,32 +78,3 @@ class Player: SKSpriteNode {
     }
 
 }
-//
-//extension NSBezierPath {
-//
-//    var cgPath: CGPath {
-//        let path = CGMutablePath()
-//        var points = [CGPoint](repeating: .zero, count: 3)
-//        for i in 0 ..< self.elementCount {
-//            let type = self.element(at: i, associatedPoints: &points)
-//
-//            switch type {
-//            case .moveTo:
-//                path.move(to: points[0])
-//
-//            case .lineTo:
-//                path.addLine(to: points[0])
-//
-//            case .curveTo:
-//                path.addCurve(to: points[2], control1: points[0], control2: points[1])
-//
-//            case .closePath:
-//                path.closeSubpath()
-//
-//            @unknown default:
-//                break
-//            }
-//        }
-//        return path
-//    }
-//}

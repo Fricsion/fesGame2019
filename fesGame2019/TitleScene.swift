@@ -27,40 +27,42 @@ class TitleScene: SKScene {
 //
 //        self.view!.layer!.insertSublayer(gradientLayer, at: 0)
 //
-//        let gametitle_str = SKLabelNode()
-//        gametitle_str.text = "Jellies of War"
-//        gametitle_str.fontSize = 40
-//        gametitle_str.fontName = "Chalkduster"
-//        gametitle_str.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2)
-//        gametitle_str.zPosition = 30
-//        self.addChild(gametitle_str)
+        let gametitle_str = SKLabelNode()
+        gametitle_str.text = "Jellies of War"
+        gametitle_str.fontSize = 40
+        gametitle_str.fontName = "Chalkduster"
+        gametitle_str.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2)
+        gametitle_str.zPosition = 30
+        self.addChild(gametitle_str)
         
-        let bubbleImg = SKTexture.init(imageNamed: "bubble_dot")
-        var bubbleTexture: [SKTexture] = []
-        let size = 128 / 4
-        for i in 0..<3 {
-            for j in 0..<3 {
-                let y = size * i
-                let x = size * j
-            //指定したサイズをtextureとして切り取る
-            let texture = SKTexture.init(rect: CGRect(x: x, y: y, width: size, height: size), in: bubbleImg)
-            //配列に入れる
-            bubbleTexture.append(texture)
-            }
-        }
-        
-        let bubble = SKSpriteNode.init(texture: bubbleTexture.first)
-        bubble.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2)
-        let bubbling = SKAction.animate(withNormalTextures: bubbleTexture, timePerFrame: 0.3)
-        bubble.run(SKAction.repeatForever(bubbling))
-
-
+        generateBubble()
         
     }
     
+    func generateBubble() {
+        var bubbleTextures: [SKTexture] = []
+        let bubbleAtlas = SKTextureAtlas(named: "bubble")
+        for i in 1...3 {
+            bubbleTextures.append(bubbleAtlas.textureNamed("bubble" + String(i)))
+        }
+        
+        var amountOfBubbles = 0
+        while (amountOfBubbles < 20) {
+            let (x, y) = (Int.random(in: 0..<500), Int.random(in: -100..<0))
+            let bubble = SKSpriteNode(texture: bubbleTextures.first)
+            bubble.position = CGPoint(x: x, y: y)
+            bubble.physicsBody = SKPhysicsBody(circleOfRadius: 8)
+            bubble.physicsBody?.affectedByGravity = false
+            bubble.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
+            let bubbling = SKAction.animate(with: bubbleTextures, timePerFrame: 0.2)
+            bubble.run(SKAction.repeatForever(bubbling))
+            self.addChild(bubble)
+            amountOfBubbles += 1
+        }
+    }
+    
     override func keyUp(with event: NSEvent) {
-        if event.keyCode == 36 {
-            print("hello")
+        if event.keyCode == 49 {
    
             let scene = GameScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill

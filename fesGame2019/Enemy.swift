@@ -25,9 +25,9 @@ class Enemy: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 15)
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.velocity = CGVector(dx: 0, dy: -100)
-        self.physicsBody?.categoryBitMask = 0x1 << 0001
-        self.physicsBody?.collisionBitMask = 0x1 << 1111
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self.physicsBody?.categoryBitMask = 0b0010
+        self.physicsBody?.collisionBitMask = 0b0001
     }
     
     required init?(coder aDecoder: NSCoder) {

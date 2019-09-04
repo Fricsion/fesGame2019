@@ -8,6 +8,7 @@
 
 
 import Cocoa
+import SpriteKit
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

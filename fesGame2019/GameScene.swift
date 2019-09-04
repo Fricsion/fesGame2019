@@ -20,13 +20,12 @@ class GameScene: SKScene {
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2)
         player.setScene(scene: self)
         self.addChild(player)
-        
-        let enemy = Enemy(def_pos: CGPoint(x: 0.0, y: 200.0))
-        enemy.setScene(scene: self)
-        self.addChild(enemy)
-        
-        _ = self.view?.bounds
 
+        let another = Player(def_pos: CGPoint(x: 300, y: 300))
+        another.setScene(scene: self)
+        self.addChild(another)
+        
+        player.physicsBody?.contactTestBitMask = another.physicsBody!.categoryBitMask
     }
 
     override func keyDown(with event: NSEvent) {
@@ -42,7 +41,6 @@ class GameScene: SKScene {
             moveDistanceX = 5
         case 49:
             player.shoot()
-            print("hello")
         default:
             break
         }
@@ -63,5 +61,11 @@ class GameScene: SKScene {
         // Called before each frame is rendered
         self.player.move(x: moveDistanceX, y: moveDistanceY)
         self.player.update()
+    }
+}
+
+extension GameScene: SKPhysicsContactDelegate {
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("------------衝突しました------------")
     }
 }
