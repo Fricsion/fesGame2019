@@ -29,7 +29,7 @@ class Player: SKSpriteNode {
         super.init(texture: textures[2], color: NSColor.clear, size: CGSize(width: 40, height: 40))
         self.position = def_pos
         
-        let animation = SKAction.animate(withNormalTextures: textures, timePerFrame: 1.0)
+        let animation = SKAction.animate(with: textures, timePerFrame: 1.0)
         self.run(SKAction.repeatForever(animation))
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 20)
@@ -45,19 +45,6 @@ class Player: SKSpriteNode {
         self.position.x += CGFloat(x)
         self.position.y += CGFloat(y)
     }
-    
-//    let lifeIndicator: SKShapeNode
-//
-//    func setLifeIndicator(health: Int) {
-//        let path = NSBezierPath.init()
-//        path.appendArc(withCenter: NSPoint(x: 0, y: 0), radius: 30, startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
-//        let lifeIndicator = SKShapeNode(path: path.cgPath)
-//        lifeIndicator.position = self.position
-//    }
-//
-//    func updateLifeIndicator(health: Int) {
-//        lifeIndicator.position = self.position
-//    }
     
     func shoot() {
         let bullet = SKShapeNode(circleOfRadius: 5)

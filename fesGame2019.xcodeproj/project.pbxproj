@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		280F165F231D5B0600CA206D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 280F165E231D5B0600CA206D /* Assets.xcassets */; };
+		280F1661231EA46600CA206D /* Borderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F1660231EA46600CA206D /* Borderline.swift */; };
 		28A760BD231A3879005276CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760BC231A3879005276CF /* AppDelegate.swift */; };
 		28A760BF231A3879005276CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760BE231A3879005276CF /* GameScene.sks */; };
 		28A760C1231A3879005276CF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760C0231A3879005276CF /* Actions.sks */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		280F165E231D5B0600CA206D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		280F1660231EA46600CA206D /* Borderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borderline.swift; sourceTree = "<group>"; };
 		28A760B9231A3879005276CF /* fesGame2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fesGame2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A760BC231A3879005276CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A760BE231A3879005276CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				28A760C2231A3879005276CF /* GameScene.swift */,
 				28A760D8231A481E005276CF /* TitleScene.swift */,
 				28A760D2231A3991005276CF /* Player.swift */,
+				280F1660231EA46600CA206D /* Borderline.swift */,
 				28A760D6231A423A005276CF /* LifeIndicator.swift */,
 				28A760D4231A3AC5005276CF /* Enemy.swift */,
 				28A760C4231A3879005276CF /* ViewController.swift */,
@@ -167,6 +170,7 @@
 				28A760D7231A423A005276CF /* LifeIndicator.swift in Sources */,
 				28A760C3231A3879005276CF /* GameScene.swift in Sources */,
 				28A760BD231A3879005276CF /* AppDelegate.swift in Sources */,
+				280F1661231EA46600CA206D /* Borderline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
