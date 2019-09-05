@@ -11,36 +11,33 @@ import GameplayKit
 
 class TitleScene: SKScene {
     
+    var timer = Timer()
+    
     override func didMove(to view: SKView) {
-        
+        // 3秒ごとに泡を生成します
+        self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.generateBubble()})
         self.backgroundColor = SKColor.black
-//        let topColor = NSColor(red: 0.54, green: 0.74, blue: 0.74, alpha: 1)
-//        let bottomColor = NSColor(red: 0.07, green: 0.13, blue: 0.26, alpha: 1)
-//
-//        let gradientColors: [CGColor] = [topColor.cgColor, bottomColor.cgColor]
-//
-//        let gradientLayer: CAGradientLayer = CAGradientLayer()
-//
-//        gradientLayer.colors = gradientColors
-//
-//        gradientLayer.frame = self.view!.bounds
-//
-//        self.view!.layer!.insertSublayer(gradientLayer, at: 0)
-//
+        
+        generateTitlelogo()
+
+    }
+    
+    func generateTitlelogo() {
         let gametitle_str = SKLabelNode()
         gametitle_str.text = "Jelly of War"
         gametitle_str.fontSize = 40
         gametitle_str.fontName = "Chalkduster"
         gametitle_str.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2)
         gametitle_str.zPosition = 30
+        let fadeoutAnime = SKAction.fadeAlpha(to: 0.5, duration: 2.3)
+        let fadeinAnime = SKAction.fadeAlpha(to: 1, duration: 2.3)
+        let actions = SKAction.sequence([fadeoutAnime, fadeinAnime])
+        gametitle_str.run(SKAction.repeatForever(actions))
         self.addChild(gametitle_str)
-        
-        generateBubble()
-        
-    }
+    }
     
     func generateBubble() {
-        // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが……
+        // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決
         var bubbleTextures: [SKTexture] = []
         let bubbleAtlas = SKTextureAtlas(named: "bubble")
         for i in 1...3 {
@@ -48,8 +45,9 @@ class TitleScene: SKScene {
         }
         
         var amountOfBubbles = 0
+        // とりあえずランダムな位置に泡を２０個生成
         while (amountOfBubbles < 20) {
-            let (x, y) = (Int.random(in: 0..<500), Int.random(in: -100..<0))
+            let (x, y) = (Int.random(in: 0..<Int((self.view!.bounds.maxX))), Int.random(in: -100..<0))
             let bubble = SKSpriteNode(texture: bubbleTextures.first)
             bubble.position = CGPoint(x: x, y: y)
             bubble.physicsBody = SKPhysicsBody(circleOfRadius: 8)
@@ -65,11 +63,13 @@ class TitleScene: SKScene {
     override func keyUp(with event: NSEvent) {
         // スペースキーを押すことでゲームが開始される
         if event.keyCode == 49 {
+            self.timer.invalidate()
             let scene = GameScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
             self.view!.presentScene(scene)
         }
     }
+    
     
     override func update(_ currentTime: TimeInterval) {
         //nothing for now  

@@ -21,11 +21,12 @@ class GameScene: SKScene {
         player.setScene(scene: self)
         self.addChild(player)
 
-        let another = Player(def_pos: CGPoint(x: 300, y: 300))
-        another.setScene(scene: self)
-        self.addChild(another)
+        let enemy = Enemy(def_pos: CGPoint(x: 300, y: 300))
+        enemy.setScene(scene: self)
+        enemy.physicsBody?.isDynamic = true
+        self.addChild(enemy)
         
-        player.physicsBody?.contactTestBitMask = another.physicsBody!.categoryBitMask
+        player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
     }
 
     override func keyDown(with event: NSEvent) {

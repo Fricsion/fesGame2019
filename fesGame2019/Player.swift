@@ -17,7 +17,7 @@ class Player: SKSpriteNode {
         print(scene)
     }
     
-    var health = 1
+    var health: Int!
     
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
@@ -29,12 +29,15 @@ class Player: SKSpriteNode {
         super.init(texture: textures[2], color: NSColor.clear, size: CGSize(width: 40, height: 40))
         self.position = def_pos
         
+        self.health = 100
+        
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation))
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = 0b1111
         self.physicsBody?.collisionBitMask = 0b1111
         
@@ -45,15 +48,14 @@ class Player: SKSpriteNode {
         self.position.y += CGFloat(y)
     }
     
-    
-    
     func shoot() {
-        let bullet = SKShapeNode(circleOfRadius: 5)
+        let bullet = SKShapeNode(circleOfRadius: 3)
         bullet.fillColor = NSColor.yellow
         bullet.position = self.position
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 5)
+        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 3)
         bullet.physicsBody?.affectedByGravity = false
         bullet.physicsBody?.categoryBitMask = 0b0001
+        bullet.physicsBody?.collisionBitMask = 0b0001
         bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
         self.gameScene.addChild(bullet)
     }

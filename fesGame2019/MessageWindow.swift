@@ -10,6 +10,6 @@ import Foundation
 import SpriteKit
 
 // メッセージウィンドウ系はクラスの型を何にすれば良いのだろう………
-class MessageWindow: SKNode {
+class MessageWindow: SKView {
     
 }
