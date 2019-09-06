@@ -21,7 +21,7 @@ class GameScene: SKScene {
         player.setScene(scene: self)
         self.addChild(player)
 
-        let enemy = Enemy(def_pos: CGPoint(x: 300, y: 300))
+        let enemy = Jellyborne(def_pos: CGPoint(x: 300, y: 300))
         enemy.setScene(scene: self)
         enemy.physicsBody?.isDynamic = true
         self.addChild(enemy)

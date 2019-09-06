@@ -37,10 +37,10 @@ class TitleScene: SKScene {
     }
     
     func generateBubble() {
-        // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決
+        // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決: タイマーで一定の間隔で呼び出すよ
         var bubbleTextures: [SKTexture] = []
         let bubbleAtlas = SKTextureAtlas(named: "bubble")
-        for i in 1...3 {
+        for i in 1...7 {
             bubbleTextures.append(bubbleAtlas.textureNamed("bubble" + String(i)))
         }
         
@@ -48,13 +48,21 @@ class TitleScene: SKScene {
         // とりあえずランダムな位置に泡を２０個生成
         while (amountOfBubbles < 20) {
             let (x, y) = (Int.random(in: 0..<Int((self.view!.bounds.maxX))), Int.random(in: -100..<0))
+            let timeBubbling = Int.random(in: 8..<13)
+            let scaleDegree = Float.random(in: 0.8..<1.2)
+            let speedCoefficient = 1 / scaleDegree
             let bubble = SKSpriteNode(texture: bubbleTextures.first)
             bubble.position = CGPoint(x: x, y: y)
+            bubble.setScale(CGFloat(scaleDegree))
+            
             bubble.physicsBody = SKPhysicsBody(circleOfRadius: 8)
             bubble.physicsBody?.affectedByGravity = false
-            bubble.physicsBody?.velocity = CGVector(dx: 0, dy: 100)
-            let bubbling = SKAction.animate(with: bubbleTextures, timePerFrame: 0.2)
-            bubble.run(SKAction.repeatForever(bubbling))
+            bubble.physicsBody?.velocity = CGVector(dx: 0, dy: Int(100 * speedCoefficient))
+            let bubbling = SKAction.animate(with: [bubbleTextures[0], bubbleTextures[1], bubbleTextures[2]], timePerFrame: 0.2)
+            let disappearing = SKAction.animate(with: bubbleTextures, timePerFrame: 0.2)
+            let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), disappearing])
+            bubble.run(action, completion: {bubble.removeFromParent()})
+            // 破裂のアクションが終わったら消したいのだが……
             self.addChild(bubble)
             amountOfBubbles += 1
         }
@@ -63,7 +71,8 @@ class TitleScene: SKScene {
     override func keyUp(with event: NSEvent) {
         // スペースキーを押すことでゲームが開始される
         if event.keyCode == 49 {
-            self.timer.invalidate()
+            self.timer.invalidate() // 泡の生成はここで止まる
+            removeAllChildren()
             let scene = GameScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
             self.view!.presentScene(scene)

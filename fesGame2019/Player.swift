@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Player: SKSpriteNode {
+class Player: SKSpriteNode, SKPhysicsContactDelegate {
     
     var gameScene: SKScene!
     func setScene(scene: SKScene) {
@@ -38,8 +38,9 @@ class Player: SKSpriteNode {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = 0b1111
-        self.physicsBody?.collisionBitMask = 0b1111
+        self.physicsBody?.categoryBitMask = 0b1000
+        self.physicsBody?.collisionBitMask = 0b1000
+        self.physicsBody?.contactTestBitMask = 0b0000
         
     }
     
@@ -54,8 +55,8 @@ class Player: SKSpriteNode {
         bullet.position = self.position
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: 3)
         bullet.physicsBody?.affectedByGravity = false
-        bullet.physicsBody?.categoryBitMask = 0b0001
-        bullet.physicsBody?.collisionBitMask = 0b0001
+        bullet.physicsBody?.categoryBitMask = 0b0100
+        bullet.physicsBody?.collisionBitMask = 0b0100
         bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
         self.gameScene.addChild(bullet)
     }
@@ -73,15 +74,26 @@ class Player: SKSpriteNode {
         let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.4)
         self.run(dyingAnimation)
         
+        self.removeFromParent()
+        
         // ゲームオーバー画面へ
         let scene = GameoverScene(size: self.gameScene.scene!.size)
         scene.scaleMode = SKSceneScaleMode.aspectFill
         self.gameScene.view!.presentScene(scene)
     }
     
+    func getDamaged() {
+        
+    }
+    
+    
     func update() {
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("collision occured by player")
+        getDamaged()
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }

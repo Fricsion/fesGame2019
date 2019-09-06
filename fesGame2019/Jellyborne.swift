@@ -9,7 +9,10 @@
 import Foundation
 import SpriteKit
 
-class Enemy: SKSpriteNode {
+//// ジェリーボーンは第一形態の設定名です。
+//回転しかしないし、攻撃も行わないチュートリアルボス的な立場です。
+
+class Jellyborne: SKSpriteNode, SKPhysicsContactDelegate {
     
     var gameScene: SKScene!
     func setScene(scene: SKScene) {
@@ -36,14 +39,15 @@ class Enemy: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
         self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-        self.physicsBody?.categoryBitMask = 0b0000
-        self.physicsBody?.collisionBitMask = 0b0000
+        self.physicsBody?.categoryBitMask = 0b0001
+        self.physicsBody?.collisionBitMask = 0b0001
+        self.physicsBody?.contactTestBitMask = 0b0100
         
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation))
         
         // 仮置き、まだ当たり判定できてないからダメージ受けようがないしね
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.getDamaged()})
+//        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.getDamaged()})
         
     }
     
@@ -51,6 +55,20 @@ class Enemy: SKSpriteNode {
         self.texture = SKTexture(imageNamed: "FirstPhase/tansan1-3")
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("collision occured by enemy")
+        getDamaged()
+    }
+    
+    func prostrate() { // １８０度回転して、ダメージを与えられるようになる
+        let action = SKAction.rotate(toAngle: CGFloat(Double.pi), duration: 1.0)
+        self.run(action)
+    }
+    
+    func spin() { // 高速回転をその場でぐるぐる、特に効果はない
+        let action = SKAction.rotate(byAngle: CGFloat(Double.pi * 2), duration: 0.5)
+        self.run(SKAction.repeat(action, count: 10))
+    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
