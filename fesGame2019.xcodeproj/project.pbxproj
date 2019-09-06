@@ -19,7 +19,6 @@
 		28A760D5231A3AC5005276CF /* Jellyborne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760D4231A3AC5005276CF /* Jellyborne.swift */; };
 		28A760D7231A423A005276CF /* LifeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760D6231A423A005276CF /* LifeIndicator.swift */; };
 		28A760D9231A481E005276CF /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760D8231A481E005276CF /* TitleScene.swift */; };
-		28A760DB231A5596005276CF /* TitleScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760DA231A5596005276CF /* TitleScene.sks */; };
 		28B0101E232017E300331CE7 /* GameoverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0101D232017E300331CE7 /* GameoverScene.swift */; };
 		28B0102023201AA500331CE7 /* MessageWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0101F23201AA500331CE7 /* MessageWindow.swift */; };
 		28B0102223223FA500331CE7 /* TravelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0102123223FA500331CE7 /* TravelScene.swift */; };
@@ -41,7 +40,6 @@
 		28A760D4231A3AC5005276CF /* Jellyborne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellyborne.swift; sourceTree = "<group>"; };
 		28A760D6231A423A005276CF /* LifeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeIndicator.swift; sourceTree = "<group>"; };
 		28A760D8231A481E005276CF /* TitleScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
-		28A760DA231A5596005276CF /* TitleScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TitleScene.sks; sourceTree = "<group>"; };
 		28B0101D232017E300331CE7 /* GameoverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameoverScene.swift; sourceTree = "<group>"; };
 		28B0101F23201AA500331CE7 /* MessageWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageWindow.swift; sourceTree = "<group>"; };
 		28B0102123223FA500331CE7 /* TravelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelScene.swift; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				28A760BC231A3879005276CF /* AppDelegate.swift */,
 				28A760BE231A3879005276CF /* GameScene.sks */,
 				28A760C0231A3879005276CF /* Actions.sks */,
-				28A760DA231A5596005276CF /* TitleScene.sks */,
 				28A760D8231A481E005276CF /* TitleScene.swift */,
 				28B0102123223FA500331CE7 /* TravelScene.swift */,
 				28A760C2231A3879005276CF /* GameScene.swift */,
@@ -159,7 +156,6 @@
 			files = (
 				28A760BF231A3879005276CF /* GameScene.sks in Resources */,
 				28A760C1231A3879005276CF /* Actions.sks in Resources */,
-				28A760DB231A5596005276CF /* TitleScene.sks in Resources */,
 				28A760CA231A387A005276CF /* Main.storyboard in Resources */,
 				280F165F231D5B0600CA206D /* Assets.xcassets in Resources */,
 			);

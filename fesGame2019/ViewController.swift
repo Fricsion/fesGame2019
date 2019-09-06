@@ -40,6 +40,12 @@ class ViewController: NSViewController {
         scene.size = view.frame.size
         view.presentScene(scene)
     }
-//
+    
+    func showTravelView() {
+        let travelView = SKView(frame: self.view.bounds)
+        let scene = TravelScene()
+        scene.scaleMode = .aspectFit
+        travelView.presentScene(scene)
+    }
 }
 

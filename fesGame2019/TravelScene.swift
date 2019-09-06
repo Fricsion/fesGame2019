@@ -1,39 +1,23 @@
 //
-//  TitleScene.swift
+//  File.swift
 //  fesGame2019
 //
-//  Created by Tiz Matz on 2019/08/31.
+//  Created by Tiz Matz on 2019/09/06.
 //  Copyright © 2019 Tiz'sMake. All rights reserved.
 //
 
 import Foundation
-import GameplayKit
+import SpriteKit
 
-class TitleScene: SKScene {
-    
-    var timer = Timer()
-    
+class TravelScene: SKScene {
     override func didMove(to view: SKView) {
-        // 3秒ごとに泡を生成します
-        self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.generateBubble()})
-        self.backgroundColor = SKColor.black
+        self.backgroundColor = NSColor.black
+        let loading_str = SKLabelNode()
+        loading_str.text = "Now Traveling to Another Scene..."
+        loading_str.position = CGPoint(x: 0, y: 20)
         
-        generateTitlelogo()
-
-    }
-    
-    func generateTitlelogo() {
-        let gametitle_str = SKLabelNode()
-        gametitle_str.text = "Jelly of War"
-        gametitle_str.fontSize = 40
-        gametitle_str.fontName = "Chalkduster"
-        gametitle_str.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2)
-        gametitle_str.zPosition = 30
-        let fadeoutAnime = SKAction.fadeAlpha(to: 0.5, duration: 2.3)
-        let fadeinAnime = SKAction.fadeAlpha(to: 1, duration: 2.3)
-        let actions = SKAction.sequence([fadeoutAnime, fadeinAnime])
-        gametitle_str.run(SKAction.repeatForever(actions))
-        self.addChild(gametitle_str)
+        self.addChild(loading_str)
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: {_ in self.generateBubble()})
     }
     
     func generateBubble() {
@@ -46,7 +30,7 @@ class TitleScene: SKScene {
         
         var amountOfBubbles = 0
         // とりあえずランダムな位置に泡を２０個生成
-        while (amountOfBubbles < 20) {
+        while (amountOfBubbles < 100) {
             let (x, y) = (Int.random(in: 0..<Int((self.view!.bounds.maxX))), Int.random(in: -100..<0))
             let timeBubbling = Int.random(in: 8..<13)
             let scaleDegree = Float.random(in: 0.8..<1.2)
@@ -68,20 +52,7 @@ class TitleScene: SKScene {
         }
     }
     
-    override func keyUp(with event: NSEvent) {
-        // スペースキーを押すことでゲームが開始される
-        if event.keyCode == 49 {
-            self.timer.invalidate() // 泡の生成はここで止まる
-            removeAllChildren()
-//            let scene = GameScene(size: self.scene!.size)
-            let scene = TravelScene(size: self.scene!.size)
-            scene.scaleMode = SKSceneScaleMode.aspectFill
-            self.view!.presentScene(scene)
-        }
-    }
-    
-    
     override func update(_ currentTime: TimeInterval) {
-        //nothing for now  
+        
     }
 }
