@@ -22,15 +22,13 @@ class GameScene: SKScene {
         self.addChild(player)
 
         let enemy = Jellyborne(def_pos: CGPoint(x: 300, y: 300))
-        enemy.setScene(scene: self)
-        enemy.physicsBody?.isDynamic = true
+        enemy.setScene(scene: self) 
         self.addChild(enemy)
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
     }
 
     override func keyDown(with event: NSEvent) {
-        
         switch event.keyCode {
         case 13:
             moveDistanceY = 5

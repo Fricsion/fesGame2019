@@ -38,6 +38,8 @@ class TitleScene: SKScene {
     
     func generateBubble() {
         // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決: タイマーで一定の間隔で呼び出すよ
+        let bubblingSound = SKAction.playSoundFileNamed("bubble-burst", waitForCompletion: false)
+        
         var bubbleTextures: [SKTexture] = []
         let bubbleAtlas = SKTextureAtlas(named: "bubble")
         for i in 1...7 {
@@ -60,8 +62,8 @@ class TitleScene: SKScene {
             bubble.physicsBody?.velocity = CGVector(dx: 0, dy: Int(100 * speedCoefficient))
             let bubbling = SKAction.animate(with: [bubbleTextures[0], bubbleTextures[1], bubbleTextures[2]], timePerFrame: 0.2)
             let disappearing = SKAction.animate(with: bubbleTextures, timePerFrame: 0.2)
-            let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), disappearing])
-            bubble.run(action, completion: {bubble.removeFromParent()})
+            let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), bubblingSound, disappearing])
+            bubble.run(action, completion: {bubble.removeFromParent()}) // アクションを実行して、すべて終了したらremoveFromParent実行
             // 破裂のアクションが終わったら消したいのだが……
             self.addChild(bubble)
             amountOfBubbles += 1
@@ -73,8 +75,8 @@ class TitleScene: SKScene {
         if event.keyCode == 49 {
             self.timer.invalidate() // 泡の生成はここで止まる
             removeAllChildren()
-//            let scene = GameScene(size: self.scene!.size)
-            let scene = TravelScene(size: self.scene!.size)
+            let scene = GameScene(size: self.scene!.size)
+//            let scene = TravelScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
             self.view!.presentScene(scene)
         }

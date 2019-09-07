@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		280F165F231D5B0600CA206D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 280F165E231D5B0600CA206D /* Assets.xcassets */; };
 		280F1661231EA46600CA206D /* Borderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F1660231EA46600CA206D /* Borderline.swift */; };
+		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
+		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
 		28A760BD231A3879005276CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760BC231A3879005276CF /* AppDelegate.swift */; };
 		28A760BF231A3879005276CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760BE231A3879005276CF /* GameScene.sks */; };
 		28A760C1231A3879005276CF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760C0231A3879005276CF /* Actions.sks */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		280F165E231D5B0600CA206D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		280F1660231EA46600CA206D /* Borderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borderline.swift; sourceTree = "<group>"; };
+		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
+		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
 		28A760B9231A3879005276CF /* fesGame2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fesGame2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A760BC231A3879005276CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A760BE231A3879005276CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -56,6 +60,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		28335E2623237BDF00887E73 /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				28335E2723237C0E00887E73 /* JellyTheSparkle.swift */,
+				28335E2423236F4C00887E73 /* Jellypour.swift */,
+				28A760D4231A3AC5005276CF /* Jellyborne.swift */,
+			);
+			path = Enemy;
+			sourceTree = "<group>";
+		};
 		28A760B0231A3879005276CF = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +98,7 @@
 				28B0101D232017E300331CE7 /* GameoverScene.swift */,
 				28B0101F23201AA500331CE7 /* MessageWindow.swift */,
 				28A760D2231A3991005276CF /* Player.swift */,
-				28A760D4231A3AC5005276CF /* Jellyborne.swift */,
+				28335E2623237BDF00887E73 /* Enemy */,
 				280F1660231EA46600CA206D /* Borderline.swift */,
 				28A760D6231A423A005276CF /* LifeIndicator.swift */,
 				28A760C4231A3879005276CF /* ViewController.swift */,
@@ -168,8 +182,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28335E2523236F4C00887E73 /* Jellypour.swift in Sources */,
 				28A760D3231A3991005276CF /* Player.swift in Sources */,
 				28B0102023201AA500331CE7 /* MessageWindow.swift in Sources */,
+				28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */,
 				28A760D5231A3AC5005276CF /* Jellyborne.swift in Sources */,
 				28A760D9231A481E005276CF /* TitleScene.swift in Sources */,
 				28A760C5231A3879005276CF /* ViewController.swift in Sources */,

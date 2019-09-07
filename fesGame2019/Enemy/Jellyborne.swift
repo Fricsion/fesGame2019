@@ -25,9 +25,9 @@ class Jellyborne: SKSpriteNode, SKPhysicsContactDelegate {
     init(def_pos: CGPoint) {
         
         var textures: [SKTexture] = []
-        let atlas = SKTextureAtlas(named: "FirstPhase")
+        let atlas = SKTextureAtlas(named: "Jellyborne")
         for i in 1..<3 {
-            textures.append(atlas.textureNamed("tansan1-" + String(i)))
+            textures.append(atlas.textureNamed("jellyborne" + String(i)))
         }
         super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 200, height: 200))
         self.position = def_pos
@@ -52,7 +52,7 @@ class Jellyborne: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     func getDamaged() {
-        self.texture = SKTexture(imageNamed: "FirstPhase/tansan1-3")
+        self.texture = SKTexture(imageNamed: "Jellyborne/jellyborne3")
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -73,6 +73,4 @@ class Jellyborne: SKSpriteNode, SKPhysicsContactDelegate {
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
-    
-    
 }
