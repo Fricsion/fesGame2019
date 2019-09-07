@@ -9,13 +9,8 @@
 import Foundation
 import SpriteKit
 
-class Player: SKSpriteNode, SKPhysicsContactDelegate {
-    
-    var gameScene: SKScene!
-    func setScene(scene: SKScene) {
-        self.gameScene = scene
-        print(scene)
-    }
+class Player: SKSpriteNode {
+
     
     var health: Int!
     
@@ -38,9 +33,9 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
-        self.physicsBody?.categoryBitMask = 0b1000
-        self.physicsBody?.collisionBitMask = 0b1000
-        self.physicsBody?.contactTestBitMask = 0b0000
+        self.physicsBody?.categoryBitMask = playerBit
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.contactTestBitMask = 0
         
     }
     
@@ -49,19 +44,20 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         self.position.y += CGFloat(y)
     }
     
-    func shoot() {
+    func shoot(in scene: SKScene) {
         let bullet = SKShapeNode(circleOfRadius: 3)
         bullet.fillColor = NSColor.yellow
         bullet.position = self.position
         bullet.physicsBody = SKPhysicsBody(circleOfRadius: 3)
         bullet.physicsBody?.affectedByGravity = false
-        bullet.physicsBody?.categoryBitMask = 0b0100
-        bullet.physicsBody?.collisionBitMask = 0b0100
+        bullet.physicsBody?.categoryBitMask = bulletBit
+        bullet.physicsBody?.collisionBitMask = 0
+        bullet.physicsBody?.contactTestBitMask = enemyBit
         bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
-        self.gameScene.addChild(bullet)
+        scene.addChild(bullet)
     }
     
-    func die() {
+    func die(scene: SKScene) {
         // 通常時のアニメーションを止める（消す）
         self.removeAllActions()
         
@@ -77,9 +73,9 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
         self.removeFromParent()
         
         // ゲームオーバー画面へ
-        let scene = GameoverScene(size: self.gameScene.scene!.size)
+        let scene = GameoverScene(size: scene.scene!.size)
         scene.scaleMode = SKSceneScaleMode.aspectFill
-        self.gameScene.view!.presentScene(scene)
+        scene.view!.presentScene(scene)
     }
     
     func getDamaged() {
@@ -87,13 +83,12 @@ class Player: SKSpriteNode, SKPhysicsContactDelegate {
     }
     
     
-    func update() {
+    func update(in scene: SKScene) {
+        if self.health <= 0 {
+            die(scene: scene)
+        }
     }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        print("collision occured by player")
-        getDamaged()
-    }
+
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }

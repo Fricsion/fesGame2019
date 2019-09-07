@@ -11,12 +11,6 @@ import SpriteKit
 
 class Jellypour: SKSpriteNode {
     
-    var gameScene: SKScene!
-    func setScene(scene: SKScene) {
-        self.gameScene = scene
-        print(scene)
-    }
-    
     init(def_pos: CGPoint) {
         let texture = SKTexture(imageNamed: "jellypour")
         super.init(texture: texture, color: NSColor.clear, size: CGSize(width: 200, height: 200))

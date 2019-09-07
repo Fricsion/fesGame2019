@@ -8,6 +8,9 @@
 
 import Foundation
 import GameplayKit
+import SpriteKit
+import AVFoundation
+
 
 class TitleScene: SKScene {
     
@@ -17,6 +20,9 @@ class TitleScene: SKScene {
         // 3秒ごとに泡を生成します
         self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.generateBubble()})
         self.backgroundColor = SKColor.black
+        
+        let bgm = SKAudioNode(fileNamed: "title_bgm")
+        self.addChild(bgm)
         
         generateTitlelogo()
 
@@ -53,6 +59,7 @@ class TitleScene: SKScene {
             let timeBubbling = Int.random(in: 8..<13)
             let scaleDegree = Float.random(in: 0.8..<1.2)
             let speedCoefficient = 1 / scaleDegree
+            let driftingDuration = Float.random(in: 0.8..<2.0)
             let bubble = SKSpriteNode(texture: bubbleTextures.first)
             bubble.position = CGPoint(x: x, y: y)
             bubble.setScale(CGFloat(scaleDegree))
@@ -61,8 +68,12 @@ class TitleScene: SKScene {
             bubble.physicsBody?.affectedByGravity = false
             bubble.physicsBody?.velocity = CGVector(dx: 0, dy: Int(100 * speedCoefficient))
             let bubbling = SKAction.animate(with: [bubbleTextures[0], bubbleTextures[1], bubbleTextures[2]], timePerFrame: 0.2)
+            let drift = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: Double(driftingDuration))
+            let drifting = SKAction.repeatForever(SKAction.sequence([drift, drift.reversed()]))
             let disappearing = SKAction.animate(with: bubbleTextures, timePerFrame: 0.2)
             let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), bubblingSound, disappearing])
+//            let actionGroup = SKAction.group([drifting, action])
+            bubble.run(drifting)
             bubble.run(action, completion: {bubble.removeFromParent()}) // アクションを実行して、すべて終了したらremoveFromParent実行
             // 破裂のアクションが終わったら消したいのだが……
             self.addChild(bubble)
