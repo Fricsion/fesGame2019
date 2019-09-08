@@ -11,7 +11,6 @@ import GameplayKit
 import SpriteKit
 import AVFoundation
 
-
 class TitleScene: SKScene {
     
     var timer = Timer()
@@ -21,8 +20,7 @@ class TitleScene: SKScene {
         self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.generateBubble()})
         self.backgroundColor = SKColor.black
         
-        let bgm = SKAudioNode(fileNamed: "title_bgm")
-        self.addChild(bgm)
+        self.addChild(SKAudioNode(fileNamed: "title_bgm"))
         
         generateTitlelogo()
 

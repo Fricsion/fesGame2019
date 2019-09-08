@@ -45,6 +45,7 @@ class Player: SKSpriteNode {
     }
     
     func shoot(in scene: SKScene) {
+        
         let bullet = SKShapeNode(circleOfRadius: 3)
         bullet.fillColor = NSColor.yellow
         bullet.position = self.position

@@ -1,39 +1,33 @@
 //
-//  GameScene.swift
+//  File.swift
 //  fesGame2019
 //
-//  Created by Tiz Matz on 2019/08/31.
+//  Created by Tiz Matz on 2019/09/08.
 //  Copyright © 2019 Tiz'sMake. All rights reserved.
 //
 
+import Foundation
 import SpriteKit
-import GameplayKit
 
-let playerBit: UInt32 = 1 << 3
-let bulletBit: UInt32 = 1 << 2
-let enemyBit : UInt32 = 1 << 0
-
-class GameScene: SKScene {
+class SecondPhaseScene: SKScene {
     
     let player = Player(def_pos: CGPoint(x: 0.0, y: 0.0))
     var moveDistanceX = 0
     var moveDistanceY = 0
     
     override func didMove(to view: SKView) {
-
+        
         physicsWorld.contactDelegate = self
         
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2)
-//        player.setScene(scene: self)
         self.addChild(player)
-
-        let enemy = Jellyborne(def_pos: CGPoint(x: 300, y: 300))
-//        enemy.setScene(scene: self)
+        
+        let enemy = Jellypour(def_pos: CGPoint(x: 300, y: 300))
         self.addChild(enemy)
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
     }
-
+    
     override func keyDown(with event: NSEvent) {
         switch event.keyCode {
         case 13:
@@ -69,7 +63,7 @@ class GameScene: SKScene {
     }
 }
 
-extension GameScene: SKPhysicsContactDelegate {
+extension SecondPhaseScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         print("------------衝突しました------------")
         let node1: SKNode

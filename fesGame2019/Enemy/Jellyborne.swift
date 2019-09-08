@@ -15,7 +15,7 @@ import SpriteKit
 class Jellyborne: SKSpriteNode {
 
     var health: Int!
-    var  durability: Int!
+    var durability: Int!
     var invincible: Bool!   // 攻撃を与えられる状態であるかどうか true -> 無敵
     
     init(def_pos: CGPoint) {
@@ -67,6 +67,11 @@ class Jellyborne: SKSpriteNode {
                 self.durability = 3
                 prostrate()
             }
+        }
+        
+        if self.health <= 0 {
+            // Jellyborne撃破後のフロー
+            
         }
     }
     

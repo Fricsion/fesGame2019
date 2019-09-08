@@ -11,6 +11,8 @@
 		280F1661231EA46600CA206D /* Borderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F1660231EA46600CA206D /* Borderline.swift */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
+		28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */; };
+		28930F722324E7EF009D3EC7 /* StraightBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28930F712324E7EF009D3EC7 /* StraightBullet.swift */; };
 		28A760BD231A3879005276CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760BC231A3879005276CF /* AppDelegate.swift */; };
 		28A760BF231A3879005276CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760BE231A3879005276CF /* GameScene.sks */; };
 		28A760C1231A3879005276CF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760C0231A3879005276CF /* Actions.sks */; };
@@ -31,6 +33,8 @@
 		280F1660231EA46600CA206D /* Borderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borderline.swift; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
+		28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPhaseScene.swift; sourceTree = "<group>"; };
+		28930F712324E7EF009D3EC7 /* StraightBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightBullet.swift; sourceTree = "<group>"; };
 		28A760B9231A3879005276CF /* fesGame2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fesGame2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A760BC231A3879005276CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28A760BE231A3879005276CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -63,11 +67,21 @@
 		28335E2623237BDF00887E73 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
+				28930F712324E7EF009D3EC7 /* StraightBullet.swift */,
 				28335E2723237C0E00887E73 /* JellyTheSparkle.swift */,
 				28335E2423236F4C00887E73 /* Jellypour.swift */,
 				28A760D4231A3AC5005276CF /* Jellyborne.swift */,
 			);
 			path = Enemy;
+			sourceTree = "<group>";
+		};
+		28930F702324E578009D3EC7 /* GameScenes */ = {
+			isa = PBXGroup;
+			children = (
+				28A760C2231A3879005276CF /* GameScene.swift */,
+				28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */,
+			);
+			path = GameScenes;
 			sourceTree = "<group>";
 		};
 		28A760B0231A3879005276CF = {
@@ -94,7 +108,7 @@
 				28A760C0231A3879005276CF /* Actions.sks */,
 				28A760D8231A481E005276CF /* TitleScene.swift */,
 				28B0102123223FA500331CE7 /* TravelScene.swift */,
-				28A760C2231A3879005276CF /* GameScene.swift */,
+				28930F702324E578009D3EC7 /* GameScenes */,
 				28B0101D232017E300331CE7 /* GameoverScene.swift */,
 				28B0101F23201AA500331CE7 /* MessageWindow.swift */,
 				28A760D2231A3991005276CF /* Player.swift */,
@@ -183,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28335E2523236F4C00887E73 /* Jellypour.swift in Sources */,
+				28930F722324E7EF009D3EC7 /* StraightBullet.swift in Sources */,
 				28A760D3231A3991005276CF /* Player.swift in Sources */,
 				28B0102023201AA500331CE7 /* MessageWindow.swift in Sources */,
 				28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */,
@@ -192,6 +207,7 @@
 				28A760D7231A423A005276CF /* LifeIndicator.swift in Sources */,
 				28A760C3231A3879005276CF /* GameScene.swift in Sources */,
 				28A760BD231A3879005276CF /* AppDelegate.swift in Sources */,
+				28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */,
 				28B0101E232017E300331CE7 /* GameoverScene.swift in Sources */,
 				28B0102223223FA500331CE7 /* TravelScene.swift in Sources */,
 				280F1661231EA46600CA206D /* Borderline.swift in Sources */,
