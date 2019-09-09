@@ -11,6 +11,9 @@
 		280F1661231EA46600CA206D /* Borderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F1660231EA46600CA206D /* Borderline.swift */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
+		2892E97B23253522009F5FE1 /* Gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97823253522009F5FE1 /* Gameover.wav */; };
+		2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97923253522009F5FE1 /* bubble_burst.mp3 */; };
+		2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97A23253522009F5FE1 /* title_bgm.mp3 */; };
 		28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */; };
 		28930F722324E7EF009D3EC7 /* StraightBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28930F712324E7EF009D3EC7 /* StraightBullet.swift */; };
 		28A760BD231A3879005276CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760BC231A3879005276CF /* AppDelegate.swift */; };
@@ -33,6 +36,9 @@
 		280F1660231EA46600CA206D /* Borderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borderline.swift; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
+		2892E97823253522009F5FE1 /* Gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gameover.wav; sourceTree = "<group>"; };
+		2892E97923253522009F5FE1 /* bubble_burst.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble_burst.mp3; sourceTree = "<group>"; };
+		2892E97A23253522009F5FE1 /* title_bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = title_bgm.mp3; sourceTree = "<group>"; };
 		28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPhaseScene.swift; sourceTree = "<group>"; };
 		28930F712324E7EF009D3EC7 /* StraightBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightBullet.swift; sourceTree = "<group>"; };
 		28A760B9231A3879005276CF /* fesGame2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fesGame2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +79,16 @@
 				28A760D4231A3AC5005276CF /* Jellyborne.swift */,
 			);
 			path = Enemy;
+			sourceTree = "<group>";
+		};
+		2892E977232534FA009F5FE1 /* Audiofiles */ = {
+			isa = PBXGroup;
+			children = (
+				2892E97A23253522009F5FE1 /* title_bgm.mp3 */,
+				2892E97823253522009F5FE1 /* Gameover.wav */,
+				2892E97923253522009F5FE1 /* bubble_burst.mp3 */,
+			);
+			path = Audiofiles;
 			sourceTree = "<group>";
 		};
 		28930F702324E578009D3EC7 /* GameScenes */ = {
@@ -118,6 +134,7 @@
 				28A760C4231A3879005276CF /* ViewController.swift */,
 				280F165E231D5B0600CA206D /* Assets.xcassets */,
 				28A760C8231A387A005276CF /* Main.storyboard */,
+				2892E977232534FA009F5FE1 /* Audiofiles */,
 				28A760CB231A387A005276CF /* Info.plist */,
 				28A760CC231A387A005276CF /* fesGame2019.entitlements */,
 			);
@@ -182,9 +199,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */,
+				2892E97B23253522009F5FE1 /* Gameover.wav in Resources */,
 				28A760BF231A3879005276CF /* GameScene.sks in Resources */,
 				28A760C1231A3879005276CF /* Actions.sks in Resources */,
 				28A760CA231A387A005276CF /* Main.storyboard in Resources */,
+				2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */,
 				280F165F231D5B0600CA206D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

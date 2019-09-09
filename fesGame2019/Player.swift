@@ -10,9 +10,9 @@ import Foundation
 import SpriteKit
 
 class Player: SKSpriteNode {
-
     
     var health: Int!
+    var invincibility: Bool!
     
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
@@ -25,9 +25,10 @@ class Player: SKSpriteNode {
         self.position = def_pos
         
         self.health = 100
+        self.invincibility = false
         
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
-        self.run(SKAction.repeatForever(animation))
+        self.run(SKAction.repeatForever(animation), withKey: "Normal")
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         self.physicsBody?.affectedByGravity = false
@@ -60,27 +61,40 @@ class Player: SKSpriteNode {
     
     func die(scene: SKScene) {
         // 通常時のアニメーションを止める（消す）
-        self.removeAllActions()
+        self.removeAction(forKey: "Normal")
         
         // 死ぬときの砕けるアニメーション
         var dyingPlayer: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "jelly")
-        for i in 4..<8 {
+        for i in 4...8 {
             dyingPlayer.append(atlas.textureNamed("jelly"+String(i)))
         }
-        let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.4)
-        self.run(dyingAnimation)
+        let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.2)
+        // アニメーションが全て終わったらゲームオーバー画面へ
+        self.run(dyingAnimation, completion: {
+            scene.removeAllChildren()
+            let newscene = GameoverScene(size: scene.scene!.size)
+            newscene.scaleMode = SKSceneScaleMode.aspectFill
+            scene.view!.presentScene(newscene)
+        })
+    
+//        self.removeFromParent()
         
-        self.removeFromParent()
         
-        // ゲームオーバー画面へ
-        let scene = GameoverScene(size: scene.scene!.size)
-        scene.scaleMode = SKSceneScaleMode.aspectFill
-        scene.view!.presentScene(scene)
     }
     
-    func getDamaged() {
-        
+    func getDamaged(in scene: SKScene) {
+        if !self.invincibility {
+            
+            if self.health <= 0 {
+                die(scene: scene)
+            } else {
+                self.health -= 50
+                print(self.health as Any)
+                let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
+                self.run(SKAction.sequence([action, action.reversed()]))
+            }
+        }
     }
     
     

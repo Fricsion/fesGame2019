@@ -28,13 +28,38 @@ class Jellypour: SKSpriteNode {
         self.invincibility = false
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 80)
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = enemyBit
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.contactTestBitMask = bulletBit
+        
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
+        self.run(SKAction.repeatForever(animation))
+    }
+
+    func fire(in scene: SKScene) {
+        let bullet = StraightBullet(def_pos: self.position)
+        scene.addChild(bullet)
+    }
+    
+    func tearRain(in scene: SKScene) {
+        var tearCount = 0
+        while tearCount <= 100 {
+//            let (x, y) = (Int.random(in: 0..<Int(scene.view!.bounds.maxX)), Int.random(in: Int(scene.view!.bounds.maxY)..<Int(scene.view!.bounds.maxY) + 200))
+            let (x, y) = (Int.random(in: 0..<800), Int.random(in: 600..<800))
+            let tear = StraightBullet(def_pos: CGPoint(x: x, y: y))
+            scene.addChild(tear)
+            tearCount += 1
+        }
         
     }
     
-    func getDamaged() {
-        
+    func getDamaged(in scene: SKScene) {
+        let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
+        self.run(SKAction.sequence([action, action.reversed()]))
     }
     
     required init?(coder aDecoder: NSCoder) {

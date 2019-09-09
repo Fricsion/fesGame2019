@@ -28,7 +28,7 @@ class Jellyborne: SKSpriteNode {
         super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 200, height: 200))
         self.position = def_pos
         self.zRotation = CGFloat(Double.pi)
-        self.health = 100
+        self.health = 20
         self.durability = 1
         self.invincible = true  // 初期状態ではダメージが入らない
         
@@ -46,7 +46,7 @@ class Jellyborne: SKSpriteNode {
         
     }
     
-    func getDamaged() {
+    func getDamaged(in scene: SKScene) {
 
         if !self.invincible {
 //          攻撃を受けた時に左右に振れるアクション
@@ -71,7 +71,9 @@ class Jellyborne: SKSpriteNode {
         
         if self.health <= 0 {
             // Jellyborne撃破後のフロー
-            
+            let newscene = SecondPhaseScene(size: self.scene!.size)
+            newscene.scaleMode = SKSceneScaleMode.aspectFill
+            scene.view!.presentScene(newscene)
         }
     }
     

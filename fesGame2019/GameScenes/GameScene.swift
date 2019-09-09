@@ -84,7 +84,7 @@ extension GameScene: SKPhysicsContactDelegate {
             let enemy = node1 as! Jellyborne
             let bullet = node2
             if node2.physicsBody?.categoryBitMask == bulletBit {
-                enemy.getDamaged()
+                enemy.getDamaged(in: self)
                 bullet.removeFromParent()
             }
         }

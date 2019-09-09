@@ -11,14 +11,57 @@ import SpriteKit
 
 class TravelScene: SKScene {
     override func didMove(to view: SKView) {
-        self.backgroundColor = NSColor.black
+        self.backgroundColor = NSColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
         let loading_str = SKLabelNode()
-        loading_str.text = "Now Traveling to Another Scene..."
-        loading_str.position = CGPoint(x: 0, y: 20)
+        loading_str.text = "Now Traveling to Deep in the Sea."
+        loading_str.fontSize = 20
+        loading_str.fontName = "ChalkDuster"
+        loading_str.fontColor = NSColor(red: 95.0/255, green: 215.0/255, blue: 243.0/255, alpha: 1.0)
+        loading_str.position = CGPoint(x: 300, y: 20)
+        
+        let sink = SKAction.move(by: CGVector(dx: 0, dy: -20), duration: 2.0)
+        let float = SKAction.move(by: CGVector(dx: 0, dy: 20), duration: 0.2)
+        let hovering = SKAction.sequence([float, sink])
+        loading_str.run(SKAction.repeatForever(hovering))
         
         self.addChild(loading_str)
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true, block: {_ in self.generateBubble()})
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: {_ in self.ZigZagNode(x: 0, y: -100)})
     }
+    
+    func ZigZagNode(x: Int, y: Int) {
+        let scr_width = self.view!.bounds.maxX
+        let scr_height = self.view!.bounds.maxY
+        let zigWidth = 50
+        let zigHeight = 20
+        let zigStartX = x
+        let zigStartY = y
+        
+        let zigPath = NSBezierPath()
+        zigPath.move(to: CGPoint(x: zigStartX, y: zigStartY))
+        
+        var coefficient = -1
+        var counter = 0
+        
+        while zigWidth * counter < Int(scr_width) {
+            counter += 1
+            let nextPoint = CGPoint(x: zigStartX + zigWidth * counter, y: zigStartY + zigHeight * coefficient)
+            coefficient *= -1
+            
+            zigPath.line(to: nextPoint)
+        }
+        
+        let zigZag = SKShapeNode()
+        zigZag.path = zigPath.cgPath
+        zigZag.lineWidth = 60
+        zigZag.lineCap = .round
+        zigZag.strokeColor = NSColor(red: 20.0/255, green: 45.0/255, blue: 100.0/255, alpha: 0.5)
+        self.addChild(zigZag)
+        
+        let goUp = SKAction.move(to: CGPoint(x: 0, y: Int(scr_height) + 300), duration: 8.0)
+        zigZag.run(goUp, completion: { zigZag.removeFromParent()})
+        
+    }
+
     
     func generateBubble() {
         // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決: タイマーで一定の間隔で呼び出すよ

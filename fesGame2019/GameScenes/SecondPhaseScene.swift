@@ -9,6 +9,8 @@
 import Foundation
 import SpriteKit
 
+let straightbulletBit: UInt32 = 1 << 4
+
 class SecondPhaseScene: SKScene {
     
     let player = Player(def_pos: CGPoint(x: 0.0, y: 0.0))
@@ -26,6 +28,8 @@ class SecondPhaseScene: SKScene {
         self.addChild(enemy)
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
+        
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
     }
     
     override func keyDown(with event: NSEvent) {
@@ -74,13 +78,21 @@ extension SecondPhaseScene: SKPhysicsContactDelegate {
             (node1, node2) = (contact.bodyB.node!, contact.bodyA.node!)
         }
         if node1.physicsBody?.categoryBitMask == enemyBit {
-            let enemy = node1 as! Jellyborne
+            let enemy = node1 as! Jellypour
             let bullet = node2
             if node2.physicsBody?.categoryBitMask == bulletBit {
-                enemy.getDamaged()
+                enemy.getDamaged(in: self)
                 bullet.removeFromParent()
             }
-            //...
+        }
+        
+        if node1.physicsBody?.categoryBitMask == playerBit {
+            let player = node1 as! Player
+            let straightbullet = node2
+            if node2.physicsBody?.categoryBitMask == straightbulletBit {
+                player.getDamaged(in: self)
+                straightbullet.removeFromParent()
+            }
         }
     }
 }

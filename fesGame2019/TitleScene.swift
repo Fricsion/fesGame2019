@@ -20,7 +20,10 @@ class TitleScene: SKScene {
         self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.generateBubble()})
         self.backgroundColor = SKColor.black
         
-        self.addChild(SKAudioNode(fileNamed: "title_bgm"))
+        let bgm = SKAudioNode(fileNamed: "title_bgm")
+        let volumeUp = SKAction.changeVolume(to: 2.0, duration: 0)
+        bgm.run(volumeUp)
+        self.addChild(bgm)
         
         generateTitlelogo()
 
@@ -42,7 +45,9 @@ class TitleScene: SKScene {
     
     func generateBubble() {
         // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決: タイマーで一定の間隔で呼び出すよ
-        let bubblingSound = SKAction.playSoundFileNamed("bubble-burst", waitForCompletion: false)
+        let bubblingSoundOrigin = SKAction.playSoundFileNamed("bubble_burst.mp3", waitForCompletion: false)
+        let changeVolume = SKAction.changeVolume(to: 0.01, duration: 0.0)
+        let bubblingSound = SKAction.group([bubblingSoundOrigin, changeVolume])
         
         var bubbleTextures: [SKTexture] = []
         let bubbleAtlas = SKTextureAtlas(named: "bubble")
@@ -84,8 +89,8 @@ class TitleScene: SKScene {
         if event.keyCode == 49 {
             self.timer.invalidate() // 泡の生成はここで止まる
             removeAllChildren()
-            let scene = GameScene(size: self.scene!.size)
-//            let scene = TravelScene(size: self.scene!.size)
+//            let scene = GameScene(size: self.scene!.size)
+            let scene = TravelScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
             self.view!.presentScene(scene)
         }

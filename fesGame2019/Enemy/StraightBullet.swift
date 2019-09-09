@@ -7,4 +7,33 @@
 //
 
 import Foundation
+import SpriteKit
 
+// 敵の撃ってくる泡はなぜか、水より比重が大きい、それゆえに下に降ってくるのだ
+// 自然の摂理に反するそれは、何か、炭酸ゼリーたちの心を体現しているようにも見える
+
+class StraightBullet: SKSpriteNode {
+    init(def_pos: CGPoint) {
+        var textures: [SKTexture] = []
+        let atlas = SKTextureAtlas(named: "StraightBullet")
+        for i in 1..<2 {
+            textures.append(atlas.textureNamed("straightbullet" + String(i)))
+        }
+        super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 20, height: 20))
+        self.position = def_pos
+        
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: -200)
+        self.physicsBody?.categoryBitMask = straightbulletBit
+        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.contactTestBitMask = playerBit
+        
+        let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
+        self.run(animation)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+}
