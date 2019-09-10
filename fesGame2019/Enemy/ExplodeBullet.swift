@@ -34,7 +34,8 @@ class ExplodeBullet: SKSpriteNode {
     
     func explode() {
         let explosion = SKAction.scale(by: 2.0, duration: 0.1)
-        self.run(explosion, completion: {
+        let wait = SKAction.wait(forDuration: 0.5)
+        self.run(SKAction.sequence([explosion, wait]), completion: {
             self.removeFromParent()
         })
         

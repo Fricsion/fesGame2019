@@ -30,7 +30,7 @@ class Player: SKSpriteNode {
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation), withKey: "Normal")
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 8)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
@@ -58,38 +58,28 @@ class Player: SKSpriteNode {
         bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
         scene.addChild(bullet)
     }
-    
-    func die(scene: SKScene) {
-        // 通常時のアニメーションを止める（消す）
-        self.removeAction(forKey: "Normal")
-        
-        // 死ぬときの砕けるアニメーション
-        var dyingPlayer: [SKTexture] = []
-        let atlas = SKTextureAtlas(named: "jelly")
-        for i in 4...8 {
-            dyingPlayer.append(atlas.textureNamed("jelly"+String(i)))
-        }
-        let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.2)
-        // アニメーションが全て終わったらゲームオーバー画面へ
-        self.run(dyingAnimation, completion: { self.goGameover(in: scene)})
-    
-//        self.removeFromParent()
-        
-        
-    }
-    
-    func goGameover(in scene: SKScene) {
-        
-        let newscene = GameoverScene(size: self.scene!.size)
-        newscene.scaleMode = SKSceneScaleMode.aspectFill
-        scene.view!.presentScene(newscene)
-    }
+
     
     func getDamaged(in scene: SKScene) {
         if !self.invincibility {
             
             if self.health <= 0 {
-                die(scene: scene)
+                // 通常時のアニメーションを止める（消す）
+                self.removeAction(forKey: "Normal")
+                
+                // 死ぬときの砕けるアニメーション
+                var dyingPlayer: [SKTexture] = []
+                let atlas = SKTextureAtlas(named: "jelly")
+                for i in 4...8 {
+                    dyingPlayer.append(atlas.textureNamed("jelly"+String(i)))
+                }
+                let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.2)
+                // アニメーションが全て終わったらゲームオーバー画面へ
+                self.run(dyingAnimation, completion: {
+                    let newscene = GameoverScene(size: self.scene!.size)
+                    newscene.scaleMode = SKSceneScaleMode.aspectFill
+                    scene.view!.presentScene(newscene)})
+                
             } else {
                 self.health -= 50
                 print(self.health as Any)
@@ -101,9 +91,7 @@ class Player: SKSpriteNode {
     
     
     func update(in scene: SKScene) {
-        if self.health <= 0 {
-            die(scene: scene)
-        }
+       
     }
 
     required init?(coder aDecoder: NSCoder) {

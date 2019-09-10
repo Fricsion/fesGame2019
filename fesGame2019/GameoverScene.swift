@@ -13,7 +13,7 @@ class GameoverScene: SKScene {
     override func didMove(to view: SKView) {
         self.backgroundColor = NSColor.black
         
-        let bgm = SKAudioNode(fileNamed: "Gameove.wav")
+        let bgm = SKAudioNode(fileNamed: "Gameover.wav")
         bgm.autoplayLooped = true
         self.addChild(bgm)
         
