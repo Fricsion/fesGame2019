@@ -10,13 +10,7 @@ import Foundation
 import SpriteKit
 
 class LifeIndicator: SKShapeNode {
-    
-    var gameScene: SKScene!
-    func setScene(scene: SKScene) {
-        self.gameScene = scene
-        print(scene)
-    }
-    
+
     init(parent: SKSpriteNode, radius: Int) {
         let path = NSBezierPath.init()
         path.appendArc(withCenter: parent.position, radius: CGFloat(radius), startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)

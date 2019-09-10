@@ -19,7 +19,7 @@ class ExplodeBullet: SKSpriteNode {
         for i in 1..<2 {
             textures.append(atlas.textureNamed("straightbullet" + String(i)))
         }
-        super.init(texture: textures.first, color: NSColor.yellow, size: CGSize(width: 20, height: 20))
+        super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 20, height: 20))
         self.position = def_pos
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
@@ -33,6 +33,7 @@ class ExplodeBullet: SKSpriteNode {
     }
     
     func explode() {
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         let explosion = SKAction.scale(by: 2.0, duration: 0.1)
         let wait = SKAction.wait(forDuration: 0.5)
         self.run(SKAction.sequence([explosion, wait]), completion: {

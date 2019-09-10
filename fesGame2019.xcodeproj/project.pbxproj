@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		280ED588232749D100C78D14 /* ExplodeBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280ED587232749D100C78D14 /* ExplodeBullet.swift */; };
 		280F165F231D5B0600CA206D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 280F165E231D5B0600CA206D /* Assets.xcassets */; };
-		280F1661231EA46600CA206D /* Borderline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280F1660231EA46600CA206D /* Borderline.swift */; };
 		2812EB4F2326A16900BE245A /* HomingBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812EB4E2326A16900BE245A /* HomingBullet.swift */; };
+		2832D67C2327827A0099F4ED /* secondPhase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2832D67B2327827A0099F4ED /* secondPhase.wav */; };
+		2832D67E232789450099F4ED /* ThirdPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832D67D232789450099F4ED /* ThirdPhaseScene.swift */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
 		2892E97B23253522009F5FE1 /* Gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97823253522009F5FE1 /* Gameover.wav */; };
@@ -36,8 +37,9 @@
 /* Begin PBXFileReference section */
 		280ED587232749D100C78D14 /* ExplodeBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplodeBullet.swift; sourceTree = "<group>"; };
 		280F165E231D5B0600CA206D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		280F1660231EA46600CA206D /* Borderline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borderline.swift; sourceTree = "<group>"; };
 		2812EB4E2326A16900BE245A /* HomingBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomingBullet.swift; sourceTree = "<group>"; };
+		2832D67B2327827A0099F4ED /* secondPhase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = secondPhase.wav; sourceTree = "<group>"; };
+		2832D67D232789450099F4ED /* ThirdPhaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPhaseScene.swift; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
 		2892E97823253522009F5FE1 /* Gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gameover.wav; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				2892E97A23253522009F5FE1 /* title_bgm.mp3 */,
+				2832D67B2327827A0099F4ED /* secondPhase.wav */,
 				2892E97823253522009F5FE1 /* Gameover.wav */,
 				2892E97923253522009F5FE1 /* bubble_burst.mp3 */,
 			);
@@ -102,6 +105,7 @@
 			children = (
 				28A760C2231A3879005276CF /* FirstPhaseScene.swift */,
 				28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */,
+				2832D67D232789450099F4ED /* ThirdPhaseScene.swift */,
 			);
 			path = GameScenes;
 			sourceTree = "<group>";
@@ -135,7 +139,6 @@
 				28B0101F23201AA500331CE7 /* MessageWindow.swift */,
 				28A760D2231A3991005276CF /* Player.swift */,
 				28335E2623237BDF00887E73 /* Enemy */,
-				280F1660231EA46600CA206D /* Borderline.swift */,
 				28A760D6231A423A005276CF /* LifeIndicator.swift */,
 				28A760C4231A3879005276CF /* ViewController.swift */,
 				280F165E231D5B0600CA206D /* Assets.xcassets */,
@@ -205,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2832D67C2327827A0099F4ED /* secondPhase.wav in Resources */,
 				2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */,
 				2892E97B23253522009F5FE1 /* Gameover.wav in Resources */,
 				28A760BF231A3879005276CF /* GameScene.sks in Resources */,
@@ -229,6 +233,7 @@
 				28B0102023201AA500331CE7 /* MessageWindow.swift in Sources */,
 				28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */,
 				28A760D5231A3AC5005276CF /* Jellyborne.swift in Sources */,
+				2832D67E232789450099F4ED /* ThirdPhaseScene.swift in Sources */,
 				28A760D9231A481E005276CF /* TitleScene.swift in Sources */,
 				2812EB4F2326A16900BE245A /* HomingBullet.swift in Sources */,
 				28A760C5231A3879005276CF /* ViewController.swift in Sources */,
@@ -238,7 +243,6 @@
 				28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */,
 				28B0101E232017E300331CE7 /* GameoverScene.swift in Sources */,
 				28B0102223223FA500331CE7 /* TravelScene.swift in Sources */,
-				280F1661231EA46600CA206D /* Borderline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

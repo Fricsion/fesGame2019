@@ -16,8 +16,12 @@ class SecondPhaseScene: SKScene {
     let player = Player(def_pos: CGPoint(x: 0.0, y: 0.0))
     var moveDistanceX = 0
     var moveDistanceY = 0
+    var sneakToggle: Bool! = false
     
     override func didMove(to view: SKView) {
+        
+        let bgm = SKAudioNode(fileNamed: "secondPhase.wav")
+        self.addChild(bgm)
         
         physicsWorld.contactDelegate = self
         
@@ -29,7 +33,7 @@ class SecondPhaseScene: SKScene {
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         
-         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
     }
     
     override func keyDown(with event: NSEvent) {
@@ -44,6 +48,8 @@ class SecondPhaseScene: SKScene {
             moveDistanceX = 5
         case 49:
             player.shoot(in: self)
+        case 56:
+            sneakToggle = true
         default:
             break
         }
@@ -55,6 +61,8 @@ class SecondPhaseScene: SKScene {
             moveDistanceY = 0
         case 0, 2:
             moveDistanceX = 0
+        case 56:
+            sneakToggle = false
         default:
             break
         }
@@ -62,7 +70,11 @@ class SecondPhaseScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        self.player.move(x: moveDistanceX, y: moveDistanceY)
+        if sneakToggle {
+            self.player.move(x: moveDistanceX/2, y: moveDistanceY/2)
+        } else {
+            self.player.move(x: moveDistanceX, y: moveDistanceY)
+        }
         self.player.update(in: self)
     }
 }

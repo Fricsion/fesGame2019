@@ -30,7 +30,7 @@ class Player: SKSpriteNode {
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation), withKey: "Normal")
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 8)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 6)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
@@ -62,7 +62,6 @@ class Player: SKSpriteNode {
     
     func getDamaged(in scene: SKScene) {
         if !self.invincibility {
-            
             if self.health <= 0 {
                 // 通常時のアニメーションを止める（消す）
                 self.removeAction(forKey: "Normal")
@@ -81,17 +80,30 @@ class Player: SKSpriteNode {
                     scene.view!.presentScene(newscene)})
                 
             } else {
+                self.invincibility = true
                 self.health -= 50
                 print(self.health as Any)
-                let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
-                self.run(SKAction.sequence([action, action.reversed()]))
+                
+                let blink = SKAction.sequence([SKAction.hide(),
+                                                  SKAction.wait(forDuration: 0.2),
+                                                  SKAction.unhide(),
+                                                  SKAction.wait(forDuration: 0.2)])
+                let blinking = SKAction.repeat(blink, count: 3)
+                
+                let shake = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
+                let shaking = SKAction.sequence([shake, shake.reversed()])
+                
+                let group = SKAction.group([shaking, blinking])
+                self.run(group, completion: {
+                    self.invincibility = false
+                })
             }
         }
     }
     
-    
     func update(in scene: SKScene) {
-       
+        
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -17,7 +17,7 @@ class Jellypour: SKSpriteNode {
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "Jellypour")
-        for i in 1..<3 {
+        for i in 1...3 {
             textures.append(atlas.textureNamed("jellypour" + String(i)))
         }
         
@@ -36,7 +36,7 @@ class Jellypour: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = bulletBit
         
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
-        self.run(SKAction.repeatForever(animation))
+        self.run(SKAction.repeatForever(SKAction.sequence([animation, animation.reversed()])))
     }
 
     func fire(in scene: SKScene) {
@@ -45,6 +45,14 @@ class Jellypour: SKSpriteNode {
     }
     
     func tearRain(in scene: SKScene) {
+        var textures: [SKTexture] = []
+        let atlas = SKTextureAtlas(named: "Jellypour")
+        for i in 4...5 {
+            textures.append(atlas.textureNamed("jellypour" + String(i)))
+        }
+        
+        self.run(SKAction.animate(with: textures, timePerFrame: 0.3))
+        
         var tearCount = 0
         while tearCount <= 100 {
 //            let (x, y) = (Int.random(in: 0..<Int(scene.view!.bounds.maxX)), Int.random(in: Int(scene.view!.bounds.maxY)..<Int(scene.view!.bounds.maxY) + 200))
@@ -60,6 +68,12 @@ class Jellypour: SKSpriteNode {
         let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
         self.run(SKAction.sequence([action, action.reversed()]))
         fire(in: scene)
+        
+        if self.health <= 0 {
+            let newscene = ThirdPhaseScene(size: self.scene!.size)
+            newscene.scaleMode = SKSceneScaleMode.aspectFill
+            scene.view!.presentScene(newscene)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

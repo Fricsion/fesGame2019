@@ -10,7 +10,13 @@ import Foundation
 import SpriteKit
 
 class GameoverScene: SKScene {
+    
+    var progressFlag: Bool!
+    
     override func didMove(to view: SKView) {
+        
+        self.progressFlag = false
+        
         self.backgroundColor = NSColor.black
         
         let bgm = SKAudioNode(fileNamed: "Gameover.wav")
@@ -35,20 +41,34 @@ class GameoverScene: SKScene {
         let actions = SKAction.sequence([wait, SKAction.group([rotate, down]), SKAction.repeatForever(SKAction.group([fadeoutAnime, fadeinAnime]))])
         gameover_str.run(actions)
         
+        self.run(SKAction.wait(forDuration: 3.0), completion: {
+            self.progressFlag = true
+        })
     }
     
+    override func keyDown(with event: NSEvent) {
+        if progressFlag {
+            switch event.keyCode {
+            case 1:
+                let newscene = TitleScene(size: self.scene!.size)
+                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                self.view!.presentScene(newscene)
+            default:
+                break
+            }
+        }
+    }
     override func keyUp(with event: NSEvent) {
-        switch event.keyCode {
-        case 49:
-            let newscene = FirstPhaseScene(size: self.scene!.size)
-            newscene.scaleMode = SKSceneScaleMode.aspectFill
-            self.view!.presentScene(newscene)
-        case 1:
-            let newscene = TitleScene(size: self.scene!.size)
-            newscene.scaleMode = SKSceneScaleMode.aspectFill
-            self.view!.presentScene(newscene)
-        default:
-            break
+        if progressFlag {
+            switch event.keyCode {
+            case 49:
+                let newscene = FirstPhaseScene(size: self.scene!.size)
+                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                self.view!.presentScene(newscene)
+                
+            default:
+                break
+            }
         }
     }
 }
