@@ -13,6 +13,7 @@ class Player: SKSpriteNode {
     
     var health: Int!
     var invincibility: Bool!
+    var defeatFlag: Bool!
     
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
@@ -26,6 +27,7 @@ class Player: SKSpriteNode {
         
         self.health = 100
         self.invincibility = false
+        self.defeatFlag = false
         
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation), withKey: "Normal")
@@ -63,10 +65,14 @@ class Player: SKSpriteNode {
     func getDamaged(in scene: SKScene) {
         if !self.invincibility {
             if self.health <= 0 {
+                if !self.defeatFlag {
+                    self.defeatFlag = true
+                    let se = SKAction.playSoundFileNamed("jellyDie.wav", waitForCompletion: false)
                 // 通常時のアニメーションを止める（消す）
                 self.removeAction(forKey: "Normal")
                 
                 // 死ぬときの砕けるアニメーション
+                
                 var dyingPlayer: [SKTexture] = []
                 let atlas = SKTextureAtlas(named: "jelly")
                 for i in 4...8 {
@@ -74,15 +80,18 @@ class Player: SKSpriteNode {
                 }
                 let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.2)
                 // アニメーションが全て終わったらゲームオーバー画面へ
-                self.run(dyingAnimation, completion: {
+                self.run(SKAction.group([dyingAnimation, se]), completion: {
                     let newscene = GameoverScene(size: self.scene!.size)
                     newscene.scaleMode = SKSceneScaleMode.aspectFill
                     scene.view!.presentScene(newscene)})
+                }
                 
             } else {
                 self.invincibility = true
                 self.health -= 50
                 print(self.health as Any)
+                
+                let se = SKAction.playSoundFileNamed("blink.mp3", waitForCompletion: false)
                 
                 let blink = SKAction.sequence([SKAction.hide(),
                                                   SKAction.wait(forDuration: 0.2),
@@ -93,7 +102,7 @@ class Player: SKSpriteNode {
                 let shake = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
                 let shaking = SKAction.sequence([shake, shake.reversed()])
                 
-                let group = SKAction.group([shaking, blinking])
+                let group = SKAction.group([shaking, blinking, se])
                 self.run(group, completion: {
                     self.invincibility = false
                 })

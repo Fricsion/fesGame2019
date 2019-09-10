@@ -9,9 +9,6 @@
 import SpriteKit
 import GameplayKit
 
-let playerBit: UInt32 = 1 << 3
-let bulletBit: UInt32 = 1 << 2
-let enemyBit : UInt32 = 1 << 0
 
 class FirstPhaseScene: SKScene {
     

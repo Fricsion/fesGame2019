@@ -12,6 +12,19 @@
 		2812EB4F2326A16900BE245A /* HomingBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812EB4E2326A16900BE245A /* HomingBullet.swift */; };
 		2832D67C2327827A0099F4ED /* secondPhase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2832D67B2327827A0099F4ED /* secondPhase.wav */; };
 		2832D67E232789450099F4ED /* ThirdPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832D67D232789450099F4ED /* ThirdPhaseScene.swift */; };
+		2832D68A2327E8110099F4ED /* teardrop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D67F2327E8100099F4ED /* teardrop.mp3 */; };
+		2832D68B2327E8110099F4ED /* touch1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6802327E8100099F4ED /* touch1.mp3 */; };
+		2832D68C2327E8110099F4ED /* boyon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6812327E8100099F4ED /* boyon.mp3 */; };
+		2832D68D2327E8110099F4ED /* data-analysis1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6822327E8100099F4ED /* data-analysis1.mp3 */; };
+		2832D68E2327E8110099F4ED /* tirin1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6832327E8100099F4ED /* tirin1.mp3 */; };
+		2832D68F2327E8110099F4ED /* switch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6842327E8100099F4ED /* switch.mp3 */; };
+		2832D6902327E8110099F4ED /* typewriter-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6852327E8100099F4ED /* typewriter-1.mp3 */; };
+		2832D6912327E8110099F4ED /* blink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6862327E8110099F4ED /* blink.mp3 */; };
+		2832D6922327E8110099F4ED /* don-1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6872327E8110099F4ED /* don-1.mp3 */; };
+		2832D6932327E8110099F4ED /* suck1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6882327E8110099F4ED /* suck1.mp3 */; };
+		2832D6942327E8110099F4ED /* stupid3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6892327E8110099F4ED /* stupid3.mp3 */; };
+		2832D6972327EC580099F4ED /* jellyDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6962327EC580099F4ED /* jellyDie.wav */; };
+		2832D6992327EF9E0099F4ED /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832D6982327EF9E0099F4ED /* global.swift */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
 		2892E97B23253522009F5FE1 /* Gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97823253522009F5FE1 /* Gameover.wav */; };
@@ -40,6 +53,19 @@
 		2812EB4E2326A16900BE245A /* HomingBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomingBullet.swift; sourceTree = "<group>"; };
 		2832D67B2327827A0099F4ED /* secondPhase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = secondPhase.wav; sourceTree = "<group>"; };
 		2832D67D232789450099F4ED /* ThirdPhaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPhaseScene.swift; sourceTree = "<group>"; };
+		2832D67F2327E8100099F4ED /* teardrop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = teardrop.mp3; sourceTree = "<group>"; };
+		2832D6802327E8100099F4ED /* touch1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = touch1.mp3; sourceTree = "<group>"; };
+		2832D6812327E8100099F4ED /* boyon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boyon.mp3; sourceTree = "<group>"; };
+		2832D6822327E8100099F4ED /* data-analysis1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "data-analysis1.mp3"; sourceTree = "<group>"; };
+		2832D6832327E8100099F4ED /* tirin1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tirin1.mp3; sourceTree = "<group>"; };
+		2832D6842327E8100099F4ED /* switch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switch.mp3; sourceTree = "<group>"; };
+		2832D6852327E8100099F4ED /* typewriter-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "typewriter-1.mp3"; sourceTree = "<group>"; };
+		2832D6862327E8110099F4ED /* blink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blink.mp3; sourceTree = "<group>"; };
+		2832D6872327E8110099F4ED /* don-1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "don-1.mp3"; sourceTree = "<group>"; };
+		2832D6882327E8110099F4ED /* suck1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = suck1.mp3; sourceTree = "<group>"; };
+		2832D6892327E8110099F4ED /* stupid3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stupid3.mp3; sourceTree = "<group>"; };
+		2832D6962327EC580099F4ED /* jellyDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jellyDie.wav; sourceTree = "<group>"; };
+		2832D6982327EF9E0099F4ED /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
 		2892E97823253522009F5FE1 /* Gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gameover.wav; sourceTree = "<group>"; };
@@ -76,6 +102,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2832D6952327E81E0099F4ED /* SE */ = {
+			isa = PBXGroup;
+			children = (
+				2832D6962327EC580099F4ED /* jellyDie.wav */,
+				2832D6862327E8110099F4ED /* blink.mp3 */,
+				2832D6812327E8100099F4ED /* boyon.mp3 */,
+				2832D6822327E8100099F4ED /* data-analysis1.mp3 */,
+				2832D6872327E8110099F4ED /* don-1.mp3 */,
+				2832D6892327E8110099F4ED /* stupid3.mp3 */,
+				2832D6882327E8110099F4ED /* suck1.mp3 */,
+				2832D6842327E8100099F4ED /* switch.mp3 */,
+				2832D67F2327E8100099F4ED /* teardrop.mp3 */,
+				2832D6832327E8100099F4ED /* tirin1.mp3 */,
+				2832D6802327E8100099F4ED /* touch1.mp3 */,
+				2832D6852327E8100099F4ED /* typewriter-1.mp3 */,
+				2892E97923253522009F5FE1 /* bubble_burst.mp3 */,
+			);
+			path = SE;
+			sourceTree = "<group>";
+		};
 		28335E2623237BDF00887E73 /* Enemy */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,10 +138,10 @@
 		2892E977232534FA009F5FE1 /* Audiofiles */ = {
 			isa = PBXGroup;
 			children = (
+				2832D6952327E81E0099F4ED /* SE */,
 				2892E97A23253522009F5FE1 /* title_bgm.mp3 */,
 				2832D67B2327827A0099F4ED /* secondPhase.wav */,
 				2892E97823253522009F5FE1 /* Gameover.wav */,
-				2892E97923253522009F5FE1 /* bubble_burst.mp3 */,
 			);
 			path = Audiofiles;
 			sourceTree = "<group>";
@@ -132,6 +178,7 @@
 				28A760BC231A3879005276CF /* AppDelegate.swift */,
 				28A760BE231A3879005276CF /* GameScene.sks */,
 				28A760C0231A3879005276CF /* Actions.sks */,
+				2832D6982327EF9E0099F4ED /* global.swift */,
 				28A760D8231A481E005276CF /* TitleScene.swift */,
 				28B0102123223FA500331CE7 /* TravelScene.swift */,
 				28930F702324E578009D3EC7 /* GameScenes */,
@@ -208,14 +255,26 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2832D68C2327E8110099F4ED /* boyon.mp3 in Resources */,
 				2832D67C2327827A0099F4ED /* secondPhase.wav in Resources */,
 				2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */,
 				2892E97B23253522009F5FE1 /* Gameover.wav in Resources */,
+				2832D68F2327E8110099F4ED /* switch.mp3 in Resources */,
+				2832D68D2327E8110099F4ED /* data-analysis1.mp3 in Resources */,
 				28A760BF231A3879005276CF /* GameScene.sks in Resources */,
+				2832D68B2327E8110099F4ED /* touch1.mp3 in Resources */,
+				2832D68A2327E8110099F4ED /* teardrop.mp3 in Resources */,
+				2832D6912327E8110099F4ED /* blink.mp3 in Resources */,
+				2832D6932327E8110099F4ED /* suck1.mp3 in Resources */,
 				28A760C1231A3879005276CF /* Actions.sks in Resources */,
 				28A760CA231A387A005276CF /* Main.storyboard in Resources */,
+				2832D6922327E8110099F4ED /* don-1.mp3 in Resources */,
+				2832D68E2327E8110099F4ED /* tirin1.mp3 in Resources */,
+				2832D6972327EC580099F4ED /* jellyDie.wav in Resources */,
 				2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */,
 				280F165F231D5B0600CA206D /* Assets.xcassets in Resources */,
+				2832D6942327E8110099F4ED /* stupid3.mp3 in Resources */,
+				2832D6902327E8110099F4ED /* typewriter-1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +297,7 @@
 				2812EB4F2326A16900BE245A /* HomingBullet.swift in Sources */,
 				28A760C5231A3879005276CF /* ViewController.swift in Sources */,
 				28A760D7231A423A005276CF /* LifeIndicator.swift in Sources */,
+				2832D6992327EF9E0099F4ED /* global.swift in Sources */,
 				28A760C3231A3879005276CF /* FirstPhaseScene.swift in Sources */,
 				28A760BD231A3879005276CF /* AppDelegate.swift in Sources */,
 				28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */,

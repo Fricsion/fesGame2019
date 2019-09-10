@@ -18,6 +18,8 @@ class Jellyborne: SKSpriteNode {
     var durability: Int!
     var invincible: Bool!   // 攻撃を与えられる状態であるかどうか true -> 無敵
     
+    var defeatFlag: Bool!   // 倒される時にtrueになることで、それ以後の処理を止めることができる
+    
     init(def_pos: CGPoint) {
         
         var textures: [SKTexture] = []
@@ -31,6 +33,7 @@ class Jellyborne: SKSpriteNode {
         self.health = 20
         self.durability = 1
         self.invincible = true  // 初期状態ではダメージが入らない
+        self.defeatFlag = false
         
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 200, height: 20))
         self.physicsBody?.affectedByGravity = false
@@ -50,8 +53,9 @@ class Jellyborne: SKSpriteNode {
 
         if !self.invincible {
 //          攻撃を受けた時に左右に振れるアクション
+            let se = SKAction.playSoundFileNamed("switch.mp3", waitForCompletion: true)
             let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
-            self.run(SKAction.sequence([action, action.reversed()]))
+            self.run(SKAction.group([(SKAction.sequence([action, action.reversed()])), se]))
             
             self.texture = SKTextureAtlas(named: "Jellyborne").textureNamed("jellyborne3")
             self.durability -= 1
@@ -62,6 +66,8 @@ class Jellyborne: SKSpriteNode {
                 self.durability = 10
             }
         } else {
+            let se = SKAction.playSoundFileNamed("boyon.mp3", waitForCompletion: false)
+            self.run(se)
             self.durability -= 1
             if self.durability <= 0 {
                 self.durability = 3
@@ -71,9 +77,12 @@ class Jellyborne: SKSpriteNode {
         
         if self.health <= 0 {
             // Jellyborne撃破後のフロー
-            let newscene = SecondPhaseScene(size: self.scene!.size)
-            newscene.scaleMode = SKSceneScaleMode.aspectFill
-            scene.view!.presentScene(newscene)
+            if !self.defeatFlag {
+                self.defeatFlag = true
+                let newscene = SecondPhaseScene(size: self.scene!.size)
+                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                scene.view!.presentScene(newscene)
+            }
         }
     }
     

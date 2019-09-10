@@ -13,6 +13,7 @@ class Jellypour: SKSpriteNode {
     
     var health: Int!
     var invincibility: Bool!
+    var defeatFlag: Bool!
     
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
@@ -26,6 +27,7 @@ class Jellypour: SKSpriteNode {
         
         self.health = 100
         self.invincibility = false
+        self.defeatFlag = false
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 80)
         self.physicsBody?.allowsRotation = false
@@ -54,7 +56,7 @@ class Jellypour: SKSpriteNode {
         self.run(SKAction.animate(with: textures, timePerFrame: 0.3))
         
         var tearCount = 0
-        while tearCount <= 100 {
+        while tearCount <= 80 {
 //            let (x, y) = (Int.random(in: 0..<Int(scene.view!.bounds.maxX)), Int.random(in: Int(scene.view!.bounds.maxY)..<Int(scene.view!.bounds.maxY) + 200))
             let (x, y) = (Int.random(in: 0..<800), Int.random(in: 600..<800))
             let tear = StraightBullet(def_pos: CGPoint(x: x, y: y))
@@ -70,9 +72,13 @@ class Jellypour: SKSpriteNode {
         fire(in: scene)
         
         if self.health <= 0 {
-            let newscene = ThirdPhaseScene(size: self.scene!.size)
-            newscene.scaleMode = SKSceneScaleMode.aspectFill
-            scene.view!.presentScene(newscene)
+            if !self.defeatFlag {
+                self.defeatFlag = true
+                let newscene = ThirdPhaseScene(size: self.scene!.size)
+                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                scene.view!.presentScene(newscene)
+            }
+            
         }
     }
     

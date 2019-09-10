@@ -46,7 +46,7 @@ class TitleScene: SKScene {
     
     func generateBubble() {
         // 改善しなければならない、コンスタントにランダムな位置に泡を生成したいのだが…… ->解決: タイマーで一定の間隔で呼び出すよ
-        let bubblingSoundOrigin = SKAction.playSoundFileNamed("bubble_burst.mp3", waitForCompletion: false)
+        let bubblingSoundOrigin = SKAction.playSoundFileNamed("teardrop.mp3", waitForCompletion: false)
         let changeVolume = SKAction.changeVolume(to: 0.01, duration: 0.0)
         let bubblingSound = SKAction.group([bubblingSoundOrigin, changeVolume])
         
@@ -62,6 +62,7 @@ class TitleScene: SKScene {
             let (x, y) = (Int.random(in: 0..<Int((self.view!.bounds.maxX))), Int.random(in: -100..<0))
             let timeBubbling = Int.random(in: 8..<13)
             let scaleDegree = Float.random(in: 0.8..<1.2)
+            
             let speedCoefficient = 1 / scaleDegree
             let driftingDuration = Float.random(in: 0.8..<2.0)
             let bubble = SKSpriteNode(texture: bubbleTextures.first)
@@ -75,10 +76,17 @@ class TitleScene: SKScene {
             let drift = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: Double(driftingDuration))
             let drifting = SKAction.repeatForever(SKAction.sequence([drift, drift.reversed()]))
             let disappearing = SKAction.animate(with: bubbleTextures, timePerFrame: 0.2)
-            let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), bubblingSound, disappearing])
+            if scaleDegree > 1.1 {
+                let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), bubblingSound, disappearing])
+                bubble.run(drifting)
+                bubble.run(action, completion: {bubble.removeFromParent()})
+            } else {
+                let action = SKAction.sequence([SKAction.repeat(bubbling, count: timeBubbling), disappearing])
+                bubble.run(drifting)
+                bubble.run(action, completion: {bubble.removeFromParent()})
+            }
 //            let actionGroup = SKAction.group([drifting, action])
-            bubble.run(drifting)
-            bubble.run(action, completion: {bubble.removeFromParent()}) // アクションを実行して、すべて終了したらremoveFromParent実行
+             // アクションを実行して、すべて終了したらremoveFromParent実行
             // 破裂のアクションが終わったら消したいのだが……
             self.addChild(bubble)
             amountOfBubbles += 1

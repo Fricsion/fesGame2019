@@ -40,6 +40,13 @@ class ViewController: NSViewController {
         scene.scaleMode = .aspectFill
         scene.size = view.frame.size
         view.presentScene(scene)
+//        
+//        let travelView = SKView(frame: self.view.bounds)
+//        travelView.alphaValue = 0.4
+//        let travelscene = TravelScene()
+//        travelscene.scaleMode = .aspectFit
+//        travelView.presentScene(travelscene)
+//        self.view.addSubview(travelView)
     }
     
     func showTravelView() {
@@ -47,6 +54,7 @@ class ViewController: NSViewController {
         let scene = TravelScene()
         scene.scaleMode = .aspectFit
         travelView.presentScene(scene)
+        self.view.addSubview(travelView)
     }
 }
 
