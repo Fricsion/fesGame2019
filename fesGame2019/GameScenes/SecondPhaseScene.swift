@@ -21,15 +21,15 @@ class SecondPhaseScene: SKScene {
         
         physicsWorld.contactDelegate = self
         
-        player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2)
+        player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
         self.addChild(player)
         
-        let enemy = Jellypour(def_pos: CGPoint(x: 300, y: 300))
+        let enemy = Jellypour(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100))
         self.addChild(enemy)
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
+         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
     }
     
     override func keyDown(with event: NSEvent) {

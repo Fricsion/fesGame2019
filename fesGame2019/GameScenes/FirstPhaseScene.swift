@@ -13,7 +13,7 @@ let playerBit: UInt32 = 1 << 3
 let bulletBit: UInt32 = 1 << 2
 let enemyBit : UInt32 = 1 << 0
 
-class GameScene: SKScene {
+class FirstPhaseScene: SKScene {
     
     let player = Player(def_pos: CGPoint(x: 0.0, y: 0.0))
     var moveDistanceX = 0
@@ -25,10 +25,10 @@ class GameScene: SKScene {
 
         physicsWorld.contactDelegate = self
         
-        player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2)
+        player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
         self.addChild(player)
 
-        let enemy = Jellyborne(def_pos: CGPoint(x: 300, y: 300))
+        let enemy = Jellyborne(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100))
         self.addChild(enemy)
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
@@ -70,7 +70,7 @@ class GameScene: SKScene {
     }
 }
 
-extension GameScene: SKPhysicsContactDelegate {
+extension FirstPhaseScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         print("------------衝突しました------------")
         let node1: SKNode

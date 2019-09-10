@@ -71,16 +71,18 @@ class Player: SKSpriteNode {
         }
         let dyingAnimation = SKAction.animate(with: dyingPlayer, timePerFrame: 0.2)
         // アニメーションが全て終わったらゲームオーバー画面へ
-        self.run(dyingAnimation, completion: {
-            scene.removeAllChildren()
-            let newscene = GameoverScene(size: scene.scene!.size)
-            newscene.scaleMode = SKSceneScaleMode.aspectFill
-            scene.view!.presentScene(newscene)
-        })
+        self.run(dyingAnimation, completion: { self.goGameover(in: scene)})
     
 //        self.removeFromParent()
         
         
+    }
+    
+    func goGameover(in scene: SKScene) {
+        
+        let newscene = GameoverScene(size: self.scene!.size)
+        newscene.scaleMode = SKSceneScaleMode.aspectFill
+        scene.view!.presentScene(newscene)
     }
     
     func getDamaged(in scene: SKScene) {

@@ -21,6 +21,7 @@ class TitleScene: SKScene {
         self.backgroundColor = SKColor.black
         
         let bgm = SKAudioNode(fileNamed: "title_bgm")
+        bgm.autoplayLooped = true
         let volumeUp = SKAction.changeVolume(to: 2.0, duration: 0)
         bgm.run(volumeUp)
         self.addChild(bgm)
@@ -89,8 +90,9 @@ class TitleScene: SKScene {
         if event.keyCode == 49 {
             self.timer.invalidate() // 泡の生成はここで止まる
             removeAllChildren()
-//            let scene = GameScene(size: self.scene!.size)
-            let scene = TravelScene(size: self.scene!.size)
+            let scene = FirstPhaseScene(size: self.scene!.size)
+//            let scene = TravelScene(size: self.scene!.size)
+//            let scene = GameoverScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
             self.view!.presentScene(scene)
         }

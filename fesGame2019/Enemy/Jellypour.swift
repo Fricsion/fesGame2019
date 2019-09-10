@@ -31,7 +31,6 @@ class Jellypour: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.allowsRotation = false
         self.physicsBody?.categoryBitMask = enemyBit
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.contactTestBitMask = bulletBit
@@ -41,7 +40,7 @@ class Jellypour: SKSpriteNode {
     }
 
     func fire(in scene: SKScene) {
-        let bullet = StraightBullet(def_pos: self.position)
+        let bullet = ExplodeBullet(def_pos: self.position, timing: 1.0)
         scene.addChild(bullet)
     }
     
@@ -60,6 +59,7 @@ class Jellypour: SKSpriteNode {
     func getDamaged(in scene: SKScene) {
         let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
         self.run(SKAction.sequence([action, action.reversed()]))
+        fire(in: scene)
     }
     
     required init?(coder aDecoder: NSCoder) {
