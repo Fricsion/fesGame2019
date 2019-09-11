@@ -29,6 +29,7 @@
 		2832D69D2327F65A0099F4ED /* puyon1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D69B2327F65A0099F4ED /* puyon1.mp3 */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
+		2889D0132328F48A0098EA9D /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2889D0122328F48A0098EA9D /* TravelViewController.swift */; };
 		2892E97B23253522009F5FE1 /* Gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97823253522009F5FE1 /* Gameover.wav */; };
 		2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97923253522009F5FE1 /* bubble_burst.mp3 */; };
 		2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97A23253522009F5FE1 /* title_bgm.mp3 */; };
@@ -72,6 +73,7 @@
 		2832D69B2327F65A0099F4ED /* puyon1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = puyon1.mp3; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
+		2889D0122328F48A0098EA9D /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
 		2892E97823253522009F5FE1 /* Gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gameover.wav; sourceTree = "<group>"; };
 		2892E97923253522009F5FE1 /* bubble_burst.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble_burst.mp3; sourceTree = "<group>"; };
 		2892E97A23253522009F5FE1 /* title_bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = title_bgm.mp3; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				28335E2623237BDF00887E73 /* Enemy */,
 				28A760D6231A423A005276CF /* LifeIndicator.swift */,
 				28A760C4231A3879005276CF /* ViewController.swift */,
+				2889D0122328F48A0098EA9D /* TravelViewController.swift */,
 				280F165E231D5B0600CA206D /* Assets.xcassets */,
 				28A760C8231A387A005276CF /* Main.storyboard */,
 				2892E977232534FA009F5FE1 /* Audiofiles */,
@@ -307,6 +310,7 @@
 				28A760D7231A423A005276CF /* LifeIndicator.swift in Sources */,
 				2832D6992327EF9E0099F4ED /* global.swift in Sources */,
 				28A760C3231A3879005276CF /* FirstPhaseScene.swift in Sources */,
+				2889D0132328F48A0098EA9D /* TravelViewController.swift in Sources */,
 				28A760BD231A3879005276CF /* AppDelegate.swift in Sources */,
 				28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */,
 				28B0101E232017E300331CE7 /* GameoverScene.swift in Sources */,

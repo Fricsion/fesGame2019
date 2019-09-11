@@ -16,9 +16,9 @@ class HomingBullet: SKSpriteNode {
     init(def_pos: CGPoint, time: CGFloat, precision: Int, speed: CGFloat) {
         
         var textures: [SKTexture] = []
-        let atlas = SKTextureAtlas(named: "StraightBullet")
+        let atlas = SKTextureAtlas(named: "HomingBullet")
         for i in 1..<2 {
-            textures.append(atlas.textureNamed("straightbullet" + String(i)))
+            textures.append(atlas.textureNamed("homingbullet" + String(i)))
         }
         super.init(texture: textures.first, color: SKColor.clear, size: CGSize(width: 20, height: 20))
         self.position = def_pos

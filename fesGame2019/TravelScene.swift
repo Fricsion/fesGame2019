@@ -59,7 +59,6 @@ class TravelScene: SKScene {
         
         let goUp = SKAction.move(to: CGPoint(x: 0, y: Int(scr_height) + 300), duration: 8.0)
         zigZag.run(goUp, completion: { zigZag.removeFromParent()})
-        
     }
 
     

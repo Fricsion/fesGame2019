@@ -19,9 +19,12 @@ class GameoverScene: SKScene {
         
         self.backgroundColor = NSColor.black
         
-        let bgm = SKAudioNode(fileNamed: "Gameover.wav")
-        bgm.autoplayLooped = true
-        self.addChild(bgm)
+        self.run(SKAction.wait(forDuration: 0.2), completion: {
+            let bgm = SKAudioNode(fileNamed: "Gameover.wav")
+            bgm.autoplayLooped = true
+            self.addChild(bgm)
+        })
+        
         
         // ゲームオーバーの文字
         let gameover_str = SKLabelNode()
@@ -68,8 +71,9 @@ class GameoverScene: SKScene {
             switch event.keyCode {
             case 1:
                 let newscene = TitleScene(size: self.scene!.size)
+                let transanime = SKTransition.flipHorizontal(withDuration: 2)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill
-                self.view!.presentScene(newscene)
+                self.view!.presentScene(newscene, transition: transanime)
             default:
                 break
             }
@@ -79,9 +83,10 @@ class GameoverScene: SKScene {
         if progressFlag {
             switch event.keyCode {
             case 49:
-                let newscene = FirstPhaseScene(size: self.scene!.size)
-                newscene.scaleMode = SKSceneScaleMode.aspectFill
-                self.view!.presentScene(newscene)
+                let scene = FirstPhaseScene(size: self.scene!.size)
+                let transanime = SKTransition.moveIn(with: .down, duration: 2)
+                scene.scaleMode = SKSceneScaleMode.aspectFill
+                self.view!.presentScene(scene, transition: transanime)
                 
             default:
                 break

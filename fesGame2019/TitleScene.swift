@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Cocoa
 import GameplayKit
 import SpriteKit
 import AVFoundation
@@ -98,11 +99,13 @@ class TitleScene: SKScene {
         if event.keyCode == 49 {
             self.timer.invalidate() // 泡の生成はここで止まる
             removeAllChildren()
+            
             let scene = FirstPhaseScene(size: self.scene!.size)
+            let transanime = SKTransition.moveIn(with: .down, duration: 2)
 //            let scene = TravelScene(size: self.scene!.size)
 //            let scene = GameoverScene(size: self.scene!.size)
             scene.scaleMode = SKSceneScaleMode.aspectFill
-            self.view!.presentScene(scene)
+            self.view!.presentScene(scene, transition: transanime)
         }
     }
     

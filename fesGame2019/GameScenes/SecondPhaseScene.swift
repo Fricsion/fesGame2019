@@ -17,10 +17,12 @@ class SecondPhaseScene: SKScene {
 
     var moveDistanceX: Float = 0.0
     var moveDistanceY: Float = 0.0
-    var sneakToggle: Bool! = false
     
     override func didMove(to view: SKView) {
-        let enemy = Jellypour(def_pos: CGPoint(x: 0.0, y: 0.0), player: self.player)
+        
+        self.backgroundColor = NSColor.black
+        
+        for i in 0...5 {ZigZagNode(x: 0, y: 0 + 100 * i)}
         
         let bgm = SKAudioNode(fileNamed: "secondPhase.wav")
         self.addChild(bgm)
@@ -30,12 +32,47 @@ class SecondPhaseScene: SKScene {
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
         self.addChild(player)
         
-        enemy.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100)
-        self.addChild(enemy)
+        let enemy = Jellypour(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100), player: self.player)
         
-        player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
+        self.run(SKAction.wait(forDuration: 3.0), completion: {
+            self.addChild(enemy)
+            self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
+        })
         
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
+    }
+    
+    func ZigZagNode(x: Int, y: Int) {
+        let scr_width = self.view!.bounds.maxX
+        let scr_height = self.view!.bounds.maxY
+        let zigWidth = 50
+        let zigHeight = 20
+        let zigStartX = x
+        let zigStartY = y
+        
+        let zigPath = NSBezierPath()
+        zigPath.move(to: CGPoint(x: zigStartX, y: zigStartY))
+        
+        var coefficient = -1
+        var counter = 0
+        
+        while zigWidth * counter < Int(scr_width) {
+            counter += 1
+            let nextPoint = CGPoint(x: zigStartX + zigWidth * counter, y: zigStartY + zigHeight * coefficient)
+            coefficient *= -1
+            
+            zigPath.line(to: nextPoint)
+        }
+        
+        let zigZag = SKShapeNode()
+        zigZag.path = zigPath.cgPath
+        zigZag.lineWidth = 60
+        zigZag.lineCap = .round
+        zigZag.strokeColor = NSColor(red: 20.0/255, green: 45.0/255, blue: 100.0/255, alpha: 0.5)
+        self.addChild(zigZag)
+        
+        let goUp = SKAction.move(to: CGPoint(x: 0, y: Int(scr_height) + 300), duration: 8.0)
+        zigZag.run(goUp, completion: { zigZag.removeFromParent()})
     }
     
     override func keyDown (with event: NSEvent) {

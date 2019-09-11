@@ -15,9 +15,9 @@ class ExplodeBullet: SKSpriteNode {
     
     init(def_pos: CGPoint, timing: TimeInterval) {
         var textures: [SKTexture] = []
-        let atlas = SKTextureAtlas(named: "StraightBullet")
+        let atlas = SKTextureAtlas(named: "ExplodeBullet")
         for i in 1..<2 {
-            textures.append(atlas.textureNamed("straightbullet" + String(i)))
+            textures.append(atlas.textureNamed("explodebullet" + String(i)))
         }
         super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 20, height: 20))
         self.position = def_pos

@@ -44,6 +44,11 @@ class Jellyborne: SKSpriteNode {
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.contactTestBitMask = bulletBit
         
+        self.alpha = 0.0
+        
+        let appear = SKAction.fadeIn(withDuration: 1)
+        self.run(appear)
+        
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation))
         
@@ -80,16 +85,18 @@ class Jellyborne: SKSpriteNode {
             if !self.defeatFlag {
                 self.defeatFlag = true
                 let newscene = SecondPhaseScene(size: self.scene!.size)
+                let transanime = SKTransition.moveIn(with: .down, duration: 2)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill
-                scene.view!.presentScene(newscene)
+                scene.view!.presentScene(newscene, transition: transanime)
             }
         }
     }
     
     func prostrate() { // １８０度回転して、ダメージを与えられるようになる
         let action = SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1.0)
-        self.run(action)
-        self.invincible = !self.invincible
+        self.run(action, completion: {
+            self.invincible = !self.invincible
+        })
     }
     
     func spin() { // 高速回転をその場でぐるぐる、特に効果はない

@@ -37,6 +37,11 @@ class Jellypour: SKSpriteNode {
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.contactTestBitMask = bulletBit
         
+        self.alpha = 0.0
+        
+        let appear = SKAction.fadeIn(withDuration: 1)
+        self.run(appear)
+        
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(SKAction.sequence([animation, animation.reversed()])))
     }
@@ -80,8 +85,9 @@ class Jellypour: SKSpriteNode {
             if !self.defeatFlag {
                 self.defeatFlag = true
                 let newscene = ThirdPhaseScene(size: self.scene!.size)
+                let transanime = SKTransition.moveIn(with: .down, duration: 2)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill
-                scene.view!.presentScene(newscene)
+                scene.view!.presentScene(newscene, transition: transanime)
             }
             
         }

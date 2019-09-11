@@ -83,7 +83,7 @@ class Player: SKSpriteNode {
                 self.run(SKAction.group([dyingAnimation, se]), completion: {
                     let newscene = GameoverScene(size: self.scene!.size)
                     newscene.scaleMode = SKSceneScaleMode.aspectFill
-                    let reveal = SKTransition.flipHorizontal(withDuration: 1)
+                    let reveal = SKTransition.fade(withDuration: 1)
                     scene.view!.presentScene(newscene, transition: reveal)})
                 }
                 

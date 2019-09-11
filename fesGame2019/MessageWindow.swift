@@ -10,6 +10,10 @@ import Foundation
 import SpriteKit
 
 // メッセージウィンドウ系はクラスの型を何にすれば良いのだろう………
-class MessageWindow: SKView {
-    
+class MessageWindow: SKScene {
+    override func didMove(to view: SKView) {
+        let characters = SKLabelNode()
+        characters.text = "hello"
+        self.addChild(characters)
+    }
 }

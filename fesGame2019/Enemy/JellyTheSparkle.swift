@@ -33,11 +33,46 @@ class JellyTheSparkle: SKSpriteNode {
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.contactTestBitMask = bulletBit
         
+        self.alpha = 0.0
+        
+        let appear = SKAction.fadeIn(withDuration: 1)
+        self.run(appear)
+        
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(animation)
     }
     
     func getDamaged(in scene: SKScene) {
+        let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
+        self.run(SKAction.sequence([action, action.reversed()]))
+        
+        if !invincibility {
+            self.health -= 1
+        }
+        if self.health <= 0 {
+            if !self.defeatFlag {
+                self.defeatFlag = true
+                let newscene = TitleScene(size: self.scene!.size)
+                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                scene.view!.presentScene(newscene)
+            }
+            
+        }
+    }
+    
+    func radialBullet(in scene: SKScene, def_pos: CGPoint, speed: Int, frequency: Float) {   // 放射状に泡を射出
+        let max: Float = 1000.0
+        let count: Int = Int(max * frequency)
+        let angle = Double.pi / Double(count)
+        var i = 0
+        while i <= count {
+            let angleNow = angle * Double(i)
+            let vectorX = cos(angleNow)
+            let vectorY = sin(angleNow)
+            let bullet = StraightBullet(def_pos: def_pos, vector: CGVector(dx: vectorX, dy: vectorY))
+            addChild(bullet)
+            i += 1
+        }
         
     }
     
