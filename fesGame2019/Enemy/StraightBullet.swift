@@ -13,7 +13,7 @@ import SpriteKit
 // 自然の摂理に反するそれは、何か、炭酸ゼリーたちの心を体現しているようにも見える
 
 class StraightBullet: SKSpriteNode {
-    init(def_pos: CGPoint) {
+    init(def_pos: CGPoint, vector: CGVector) {
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "StraightBullet")
         for i in 1..<2 {
@@ -24,13 +24,15 @@ class StraightBullet: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.velocity = CGVector(dx: 0, dy: -200)
+        self.physicsBody?.velocity = vector
         self.physicsBody?.categoryBitMask = straightbulletBit
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.contactTestBitMask = playerBit
         
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
-        self.run(animation)
+        self.run(SKAction.repeat(animation, count: 30), completion: {
+            self.removeFromParent()
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {

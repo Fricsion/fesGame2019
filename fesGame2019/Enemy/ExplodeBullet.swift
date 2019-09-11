@@ -33,10 +33,14 @@ class ExplodeBullet: SKSpriteNode {
     }
     
     func explode() {
-        self.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+        self.physicsBody?.velocity = CGVector(dx: 0, dy: 20)
+        let blink = SKAction.sequence([SKAction.fadeAlpha(to: 0.2, duration: 0.2),
+                                       SKAction.fadeAlpha(to: 0.8, duration: 0.2)])
+        let blinking = SKAction.repeat(blink, count: 2)
         let explosion = SKAction.scale(by: 2.0, duration: 0.1)
         let wait = SKAction.wait(forDuration: 0.5)
-        self.run(SKAction.sequence([explosion, wait]), completion: {
+        
+        self.run(SKAction.sequence([blinking, explosion, wait]), completion: {
             self.removeFromParent()
         })
         

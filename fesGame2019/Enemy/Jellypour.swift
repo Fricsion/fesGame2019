@@ -42,7 +42,8 @@ class Jellypour: SKSpriteNode {
     }
 
     func fire(in scene: SKScene) {
-        let bullet = ExplodeBullet(def_pos: self.position, timing: 1.0)
+        let timing = Float.random(in: 0.8..<1.2)
+        let bullet = ExplodeBullet(def_pos: self.position, timing: TimeInterval(timing))
         scene.addChild(bullet)
     }
     
@@ -59,7 +60,8 @@ class Jellypour: SKSpriteNode {
         while tearCount <= 50 {
 //            let (x, y) = (Int.random(in: 0..<Int(scene.view!.bounds.maxX)), Int.random(in: Int(scene.view!.bounds.maxY)..<Int(scene.view!.bounds.maxY) + 200))
             let (x, y) = (Int.random(in: 0..<800), Int.random(in: 600..<800))
-            let tear = StraightBullet(def_pos: CGPoint(x: x, y: y))
+            let dy = Int.random(in: 200..<300)
+            let tear = StraightBullet(def_pos: CGPoint(x: x, y: y), vector: CGVector(dx: 0, dy: -dy))
             scene.addChild(tear)
             tearCount += 1
         }
@@ -72,7 +74,7 @@ class Jellypour: SKSpriteNode {
         fire(in: scene)
         
         if !invincibility {
-            self.health -= 5
+            self.health -= 1
         }
         if self.health <= 0 {
             if !self.defeatFlag {
