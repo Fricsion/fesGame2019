@@ -19,3 +19,7 @@ let enemyBit : UInt32 = 1 << 0
 */
 var score: Int = 0
 var scores: [Int] = []
+
+// ShiftキーとControlキーによる移動速度変化の値
+let SpeedUpRate: Float = 2.0
+let SlowDownRate: Float = 0.5

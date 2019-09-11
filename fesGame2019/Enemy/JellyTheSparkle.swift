@@ -10,6 +10,11 @@ import Foundation
 import SpriteKit
 
 class JellyTheSparkle: SKSpriteNode {
+    
+    var health: Int = 100
+    var invincibility: Bool! = false
+    var defeatFlag: Bool! = false
+    
     init(def_pos: CGPoint) {
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "JellyTheSparkle")
@@ -30,6 +35,10 @@ class JellyTheSparkle: SKSpriteNode {
         
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(animation)
+    }
+    
+    func getDamaged(in scene: SKScene) {
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

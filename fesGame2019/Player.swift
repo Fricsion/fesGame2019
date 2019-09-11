@@ -42,7 +42,7 @@ class Player: SKSpriteNode {
         
     }
     
-    func move(x: Int, y: Int) {
+    func move(x: Float, y: Float) {
         self.position.x += CGFloat(x)
         self.position.y += CGFloat(y)
     }
@@ -83,7 +83,8 @@ class Player: SKSpriteNode {
                 self.run(SKAction.group([dyingAnimation, se]), completion: {
                     let newscene = GameoverScene(size: self.scene!.size)
                     newscene.scaleMode = SKSceneScaleMode.aspectFill
-                    scene.view!.presentScene(newscene)})
+                    let reveal = SKTransition.flipHorizontal(withDuration: 1)
+                    scene.view!.presentScene(newscene, transition: reveal)})
                 }
                 
             } else {

@@ -14,11 +14,13 @@ let straightbulletBit: UInt32 = 1 << 4
 class SecondPhaseScene: SKScene {
     
     let player = Player(def_pos: CGPoint(x: 0.0, y: 0.0))
-    var moveDistanceX = 0
-    var moveDistanceY = 0
+
+    var moveDistanceX: Float = 0.0
+    var moveDistanceY: Float = 0.0
     var sneakToggle: Bool! = false
     
     override func didMove(to view: SKView) {
+        let enemy = Jellypour(def_pos: CGPoint(x: 0.0, y: 0.0), player: self.player)
         
         let bgm = SKAudioNode(fileNamed: "secondPhase.wav")
         self.addChild(bgm)
@@ -28,7 +30,7 @@ class SecondPhaseScene: SKScene {
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
         self.addChild(player)
         
-        let enemy = Jellypour(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100))
+        enemy.position = CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100)
         self.addChild(enemy)
         
         player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
@@ -36,46 +38,61 @@ class SecondPhaseScene: SKScene {
         Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
     }
     
-    override func keyDown(with event: NSEvent) {
+    override func keyDown (with event: NSEvent) {
+        var accelerateRate: Float = 1.0
+        let modifiers: NSEvent.ModifierFlags = event.modifierFlags
+        if modifiers.contains(NSEvent.ModifierFlags.shift) {
+            accelerateRate = SlowDownRate
+        } else if modifiers.contains(NSEvent.ModifierFlags.control) {
+            accelerateRate = SpeedUpRate
+        }
+        
         switch event.keyCode {
         case 13:
-            moveDistanceY = 5
+            moveDistanceY = 5.0 * accelerateRate
         case 0:
-            moveDistanceX = -5
+            moveDistanceX = -5.0 * accelerateRate
         case 1:
-            moveDistanceY = -5
+            moveDistanceY = -5.0 * accelerateRate
         case 2:
-            moveDistanceX = 5
+            moveDistanceX = 5.0 * accelerateRate
         case 49:
             player.shoot(in: self)
-        case 56:
-            sneakToggle = true
         default:
             break
         }
     }
     
-    override func keyUp(with event: NSEvent) {
+    override func keyUp (with event: NSEvent) {
+        var accelerateRate: Float = 1.0
+        let modifiers: NSEvent.ModifierFlags = event.modifierFlags
+        if modifiers.contains(NSEvent.ModifierFlags.shift) {
+            accelerateRate = SlowDownRate
+        } else if modifiers.contains(NSEvent.ModifierFlags.control) {
+            accelerateRate = SpeedUpRate
+        }
+        if accelerateRate != 1.0 {
+            moveDistanceX = moveDistanceX / accelerateRate
+            moveDistanceY = moveDistanceY / accelerateRate
+        }
+        
         switch event.keyCode {
         case 13, 1:
             moveDistanceY = 0
         case 0, 2:
             moveDistanceX = 0
-        case 56:
-            sneakToggle = false
         default:
             break
         }
     }
     
+    
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        if sneakToggle {
-            self.player.move(x: moveDistanceX/2, y: moveDistanceY/2)
-        } else {
-            self.player.move(x: moveDistanceX, y: moveDistanceY)
-        }
+ 
+        self.player.move(x: moveDistanceX, y: moveDistanceY)
         self.player.update(in: self)
+        
     }
 }
 

@@ -25,6 +25,8 @@
 		2832D6942327E8110099F4ED /* stupid3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6892327E8110099F4ED /* stupid3.mp3 */; };
 		2832D6972327EC580099F4ED /* jellyDie.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6962327EC580099F4ED /* jellyDie.wav */; };
 		2832D6992327EF9E0099F4ED /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832D6982327EF9E0099F4ED /* global.swift */; };
+		2832D69C2327F65A0099F4ED /* smoke1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D69A2327F65A0099F4ED /* smoke1.mp3 */; };
+		2832D69D2327F65A0099F4ED /* puyon1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D69B2327F65A0099F4ED /* puyon1.mp3 */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
 		2892E97B23253522009F5FE1 /* Gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97823253522009F5FE1 /* Gameover.wav */; };
@@ -66,6 +68,8 @@
 		2832D6892327E8110099F4ED /* stupid3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stupid3.mp3; sourceTree = "<group>"; };
 		2832D6962327EC580099F4ED /* jellyDie.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jellyDie.wav; sourceTree = "<group>"; };
 		2832D6982327EF9E0099F4ED /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
+		2832D69A2327F65A0099F4ED /* smoke1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = smoke1.mp3; sourceTree = "<group>"; };
+		2832D69B2327F65A0099F4ED /* puyon1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = puyon1.mp3; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
 		2892E97823253522009F5FE1 /* Gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gameover.wav; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 				2832D6862327E8110099F4ED /* blink.mp3 */,
 				2832D6812327E8100099F4ED /* boyon.mp3 */,
 				2832D6822327E8100099F4ED /* data-analysis1.mp3 */,
+				2832D69B2327F65A0099F4ED /* puyon1.mp3 */,
+				2832D69A2327F65A0099F4ED /* smoke1.mp3 */,
 				2832D6872327E8110099F4ED /* don-1.mp3 */,
 				2832D6892327E8110099F4ED /* stupid3.mp3 */,
 				2832D6882327E8110099F4ED /* suck1.mp3 */,
@@ -263,6 +269,7 @@
 				2832D68D2327E8110099F4ED /* data-analysis1.mp3 in Resources */,
 				28A760BF231A3879005276CF /* GameScene.sks in Resources */,
 				2832D68B2327E8110099F4ED /* touch1.mp3 in Resources */,
+				2832D69D2327F65A0099F4ED /* puyon1.mp3 in Resources */,
 				2832D68A2327E8110099F4ED /* teardrop.mp3 in Resources */,
 				2832D6912327E8110099F4ED /* blink.mp3 in Resources */,
 				2832D6932327E8110099F4ED /* suck1.mp3 in Resources */,
@@ -271,6 +278,7 @@
 				2832D6922327E8110099F4ED /* don-1.mp3 in Resources */,
 				2832D68E2327E8110099F4ED /* tirin1.mp3 in Resources */,
 				2832D6972327EC580099F4ED /* jellyDie.wav in Resources */,
+				2832D69C2327F65A0099F4ED /* smoke1.mp3 in Resources */,
 				2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */,
 				280F165F231D5B0600CA206D /* Assets.xcassets in Resources */,
 				2832D6942327E8110099F4ED /* stupid3.mp3 in Resources */,

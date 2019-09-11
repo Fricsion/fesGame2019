@@ -40,6 +40,8 @@ class ViewController: NSViewController {
         scene.scaleMode = .aspectFill
         scene.size = view.frame.size
         view.presentScene(scene)
+        view.showsFPS = true
+        view.showsNodeCount = true
 //        
 //        let travelView = SKView(frame: self.view.bounds)
 //        travelView.alphaValue = 0.4
