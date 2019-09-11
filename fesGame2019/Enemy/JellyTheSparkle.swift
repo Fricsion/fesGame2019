@@ -63,14 +63,14 @@ class JellyTheSparkle: SKSpriteNode {
     func radialBullet(in scene: SKScene, def_pos: CGPoint, speed: Int, frequency: Float) {   // 放射状に泡を射出
         let max: Float = 1000.0
         let count: Int = Int(max * frequency)
-        let angle = Double.pi / Double(count)
+        let angle = 2.0 * Double.pi / Double(count) // 2pi を count 分割する　→ 泡の射線通しの間の角度
         var i = 0
         while i <= count {
             let angleNow = angle * Double(i)
-            let vectorX = cos(angleNow)
-            let vectorY = sin(angleNow)
+            let vectorX = cos(angleNow) * Double(speed)
+            let vectorY = sin(angleNow) * Double(speed)
             let bullet = StraightBullet(def_pos: def_pos, vector: CGVector(dx: vectorX, dy: vectorY))
-            addChild(bullet)
+            scene.addChild(bullet)
             i += 1
         }
         

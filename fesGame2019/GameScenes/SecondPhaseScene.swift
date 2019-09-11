@@ -22,6 +22,9 @@ class SecondPhaseScene: SKScene {
         
         self.backgroundColor = NSColor.black
         
+        
+        self.run(SKAction.playSoundFileNamed("smoke.mp3", waitForCompletion: false))
+        
         for i in 0...5 {ZigZagNode(x: 0, y: 0 + 100 * i)}
         
         let bgm = SKAudioNode(fileNamed: "secondPhase.wav")

@@ -79,11 +79,12 @@ class Jellypour: SKSpriteNode {
         fire(in: scene)
         
         if !invincibility {
-            self.health -= 1
+            self.health -= 50
         }
         if self.health <= 0 {
             if !self.defeatFlag {
                 self.defeatFlag = true
+                self.run(SKAction.playSoundFileNamed("don.mp3", waitForCompletion: true))
                 let newscene = ThirdPhaseScene(size: self.scene!.size)
                 let transanime = SKTransition.moveIn(with: .down, duration: 2)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill

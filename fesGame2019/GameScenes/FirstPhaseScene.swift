@@ -21,6 +21,8 @@ class FirstPhaseScene: SKScene {
     override func didMove(to view: SKView) {
         
         self.backgroundColor = NSColor.black
+        
+        self.run(SKAction.playSoundFileNamed("smoke.mp3", waitForCompletion: false))
 
         moveDistanceX = 0.0
         moveDistanceY = 0.0

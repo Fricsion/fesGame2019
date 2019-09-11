@@ -19,7 +19,12 @@ class ThirdPhaseScene: SKScene {
         
         self.backgroundColor = NSColor.black
         
+        self.run(SKAction.playSoundFileNamed("smoke.mp3", waitForCompletion: false))
+        
         for i in 0...5 {ZigZagNode(x: 0, y: 0 + 100 * i)}
+        
+        let bgm = SKAudioNode(fileNamed: "thirdPhase.mp3")
+        self.addChild(bgm)
         
 //        let bgm = SKAudioNode(fileNamed: "")
 //        self.addChild(bgm)
@@ -34,6 +39,8 @@ class ThirdPhaseScene: SKScene {
             self.addChild(enemy)
             self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         })
+        
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.radialBullet(in: self, def_pos: enemy.position, speed: 100, frequency: 0.05)})
     }
     
     func ZigZagNode(x: Int, y: Int) {

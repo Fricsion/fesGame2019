@@ -55,9 +55,9 @@ class Jellyborne: SKSpriteNode {
     }
     
     func getDamaged(in scene: SKScene) {
-
+        
         if !self.invincible {
-//          攻撃を受けた時に左右に振れるアクション
+            //          攻撃を受けた時に左右に振れるアクション
             let se = SKAction.playSoundFileNamed("switch.mp3", waitForCompletion: true)
             let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
             self.run(SKAction.group([(SKAction.sequence([action, action.reversed()])), se]))
@@ -84,6 +84,7 @@ class Jellyborne: SKSpriteNode {
             // Jellyborne撃破後のフロー
             if !self.defeatFlag {
                 self.defeatFlag = true
+                self.run(SKAction.playSoundFileNamed("don.mp3", waitForCompletion: true))
                 let newscene = SecondPhaseScene(size: self.scene!.size)
                 let transanime = SKTransition.moveIn(with: .down, duration: 2)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill
