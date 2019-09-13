@@ -16,7 +16,7 @@ class StraightBullet: SKSpriteNode {
     init(def_pos: CGPoint, vector: CGVector) {
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "StraightBullet")
-        for i in 1..<2 {
+        for i in 1...2 {
             textures.append(atlas.textureNamed("straightbullet" + String(i)))
         }
         super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 20, height: 20))

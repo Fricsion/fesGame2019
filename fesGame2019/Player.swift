@@ -16,6 +16,7 @@ class Player: SKSpriteNode {
     var defeatFlag: Bool!
     
     init(def_pos: CGPoint) {
+        
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "jelly")
         for i in 1...3 {
@@ -23,6 +24,9 @@ class Player: SKSpriteNode {
         }
         
         super.init(texture: textures[2], color: NSColor.clear, size: CGSize(width: 40, height: 40))
+        
+        self.name = "player"
+        
         self.position = def_pos
         
         self.health = 100
@@ -32,7 +36,7 @@ class Player: SKSpriteNode {
         let animation = SKAction.animate(with: textures, timePerFrame: 0.2)
         self.run(SKAction.repeatForever(animation), withKey: "Normal")
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 6)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 4)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
@@ -43,22 +47,25 @@ class Player: SKSpriteNode {
     }
     
     func move(x: Float, y: Float) {
-        self.position.x += CGFloat(x)
-        self.position.y += CGFloat(y)
+        if !defeatFlag {
+            self.position.x += CGFloat(x)
+            self.position.y += CGFloat(y)
+        }
     }
     
     func shoot(in scene: SKScene) {
-        
-        let bullet = SKShapeNode(circleOfRadius: 3)
-        bullet.fillColor = NSColor.yellow
-        bullet.position = self.position
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 3)
-        bullet.physicsBody?.affectedByGravity = false
-        bullet.physicsBody?.categoryBitMask = bulletBit
-        bullet.physicsBody?.collisionBitMask = 0
-        bullet.physicsBody?.contactTestBitMask = enemyBit
-        bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
-        scene.addChild(bullet)
+        if !defeatFlag {
+            let bullet = SKShapeNode(circleOfRadius: 3)
+            bullet.fillColor = NSColor.yellow
+            bullet.position = self.position
+            bullet.physicsBody = SKPhysicsBody(circleOfRadius: 3)
+            bullet.physicsBody?.affectedByGravity = false
+            bullet.physicsBody?.categoryBitMask = bulletBit
+            bullet.physicsBody?.collisionBitMask = 0
+            bullet.physicsBody?.contactTestBitMask = enemyBit
+            bullet.physicsBody?.velocity = CGVector(dx: 0, dy: 300)
+            scene.addChild(bullet)
+        }
     }
 
     
@@ -89,7 +96,7 @@ class Player: SKSpriteNode {
                 
             } else {
                 self.invincibility = true
-                self.health -= 50
+                self.health -= 10
                 print(self.health as Any)
                 
                 let se = SKAction.playSoundFileNamed("blink.mp3", waitForCompletion: false)

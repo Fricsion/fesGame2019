@@ -100,7 +100,8 @@ class TitleScene: SKScene {
             self.timer.invalidate() // 泡の生成はここで止まる
             removeAllChildren()
             
-            let scene = FirstPhaseScene(size: self.scene!.size)
+//            let scene = FirstPhaseScene(size: self.scene!.size)
+            let scene = SecondPhaseScene(size: self.scene!.size)
             let transanime = SKTransition.moveIn(with: .down, duration: 2)
 //            let scene = TravelScene(size: self.scene!.size)
 //            let scene = GameoverScene(size: self.scene!.size)

@@ -47,8 +47,9 @@ class Jellypour: SKSpriteNode {
     }
 
     func fire(in scene: SKScene) {
+        let player: Player = scene.childNode(withName: "player") as! Player
         let timing = Float.random(in: 0.8..<1.2)
-        let bullet = ExplodeBullet(def_pos: self.position, timing: TimeInterval(timing))
+        let bullet = ExplodeBullet(def_pos: self.position, timing: TimeInterval(timing), destination: player.position)
         scene.addChild(bullet)
     }
     
@@ -79,7 +80,7 @@ class Jellypour: SKSpriteNode {
         fire(in: scene)
         
         if !invincibility {
-            self.health -= 50
+            self.health -= 10
         }
         if self.health <= 0 {
             if !self.defeatFlag {

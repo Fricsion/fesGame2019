@@ -47,6 +47,7 @@ class ViewController: NSViewController {
     }
     
     func showMessageWindow() {
+        
         let messageView = SKView(frame: NSRect(x: 50, y: 50, width: 400, height: 100))
         let scene = MessageWindow()
         messageView.presentScene(scene)
