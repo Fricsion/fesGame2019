@@ -34,6 +34,7 @@ class ViewController: NSViewController {
 //            view.showsNodeCount = true
 //        }
 //    }
+    
     override func viewDidLoad() {
         let view = self.view as! SKView
         let scene = TitleScene()
@@ -42,24 +43,6 @@ class ViewController: NSViewController {
         view.presentScene(scene)
         view.showsFPS = true
         view.showsNodeCount = true
-        
-        
-    }
-    
-    func showMessageWindow() {
-        
-        let messageView = SKView(frame: NSRect(x: 50, y: 50, width: 400, height: 100))
-        let scene = MessageWindow()
-        messageView.presentScene(scene)
-        self.view.addSubview(messageView)
-        
-    }
-    func showTravelView() {
-        let travelView = SKView(frame: self.view.bounds)
-        let scene = TravelScene()
-        scene.scaleMode = .aspectFit
-        travelView.presentScene(scene)
-        self.view.addSubview(travelView)
     }
 }
 

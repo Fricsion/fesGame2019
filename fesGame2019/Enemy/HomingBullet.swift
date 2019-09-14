@@ -25,12 +25,12 @@ class HomingBullet: SKSpriteNode {
         super.init(texture: textures.first, color: SKColor.clear, size: CGSize(width: 20, height: 20))
         self.position = def_pos
         
-        let speed: Float = 30.0  // 1秒あたり、100ピクセル
-        let time: Float = 10.0 // 追尾を行う時間
+        let speed: Float = 15.0  // 1秒あたり、100ピクセル
+        let time: Float = 4.0 // 追尾を行う時間
         let timeErase: Float = 10.0 // 消滅する時間
         let precision: Float = 100.0 // 消滅するまでに軌道修正（aim）する回数
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 8)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = straightbulletBit
         self.physicsBody?.collisionBitMask = 0
@@ -39,12 +39,17 @@ class HomingBullet: SKSpriteNode {
         let animation = SKAction.animate(with: Array(textures[0...3]), timePerFrame: 0.2)
         self.run(animation)
         
-        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in self.update()})
+        let updateTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in self.update()})
         let timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(time/precision), repeats: true, block: {_ in self.aim(in: scene, speed: speed)})
         
-        Timer.scheduledTimer(withTimeInterval: TimeInterval(timeErase), repeats: false, block: {_ in
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(time), repeats: false, block: { _ in
             timer.invalidate()
-            self.run(SKAction.animate(with: Array(textures[4...6]), timePerFrame: 0.2), completion: { 
+        })
+        
+        Timer.scheduledTimer(withTimeInterval: TimeInterval(timeErase), repeats: false, block: {_ in
+            
+            self.run(SKAction.animate(with: Array(textures[4...6]), timePerFrame: 0.2), completion: {
+                updateTimer.invalidate()
                 self.removeFromParent()
             })
             
@@ -56,7 +61,7 @@ class HomingBullet: SKSpriteNode {
         let (px, py) = (player.position.x, player.position.y)
         let (bx, by) = (self.position.x, self.position.y)
         let (rawVX, rawVY) = (px - bx, py - by)
-        let adjestedVector = adjestVector(givenVector: CGVector(dx: rawVX, dy: rawVY), magnitude: 5)
+        let adjestedVector = adjestVector(givenVector: CGVector(dx: rawVX, dy: rawVY), magnitude: CGFloat(speed))
 
         self.moveX = adjestedVector.dx
         self.moveY = adjestedVector.dy
@@ -65,7 +70,6 @@ class HomingBullet: SKSpriteNode {
     func update() {
         self.position.x += self.moveX
         self.position.y += self.moveY
-        print(self.moveX, self.moveY)
         
     }
     

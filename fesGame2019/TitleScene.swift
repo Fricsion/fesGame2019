@@ -21,7 +21,7 @@ class TitleScene: SKScene {
         self.timer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in self.generateBubble()})
         self.backgroundColor = SKColor.black
         
-        let bgm = SKAudioNode(fileNamed: "title_bgm")
+        let bgm = SKAudioNode(fileNamed: "01Jelly.wav")
         bgm.autoplayLooped = true
         let volumeUp = SKAction.changeVolume(to: 2.0, duration: 0)
         bgm.run(volumeUp)
@@ -100,8 +100,8 @@ class TitleScene: SKScene {
             self.timer.invalidate() // 泡の生成はここで止まる
             removeAllChildren()
             
-//            let scene = FirstPhaseScene(size: self.scene!.size)
-            let scene = SecondPhaseScene(size: self.scene!.size)
+            let scene = FirstPhaseScene(size: self.scene!.size)
+//            let scene = SecondPhaseScene(size: self.scene!.size)
             let transanime = SKTransition.moveIn(with: .down, duration: 2)
 //            let scene = TravelScene(size: self.scene!.size)
 //            let scene = GameoverScene(size: self.scene!.size)

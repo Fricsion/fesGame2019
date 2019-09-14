@@ -11,22 +11,26 @@ import SpriteKit
 
 class LifeIndicator: SKShapeNode {
 
-    init(parent: SKSpriteNode, radius: Int) {
+    override init() {
         let path = NSBezierPath.init()
-        path.appendArc(withCenter: parent.position, radius: CGFloat(radius), startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
+        path.appendArc(withCenter: CGPoint(x: 100, y: 100), radius: CGFloat(70), startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
         super.init()
         self.path = path.cgPath
+        self.strokeColor = NSColor.green
+        self.lineWidth = 30
+        self.lineCap = .round
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError()
     }
     
-    func updatePosition(parent: SKSpriteNode) {
-        self.position = parent.position
-    }
-    
-    func updateHealth(health: Float) {
+    func updateHealth(health: Int) {
+        let changedPath = NSBezierPath()
+        print(Double(health)/100.0)
+        let endAngle: CGFloat = CGFloat(-360 * health/100)
+        changedPath.appendArc(withCenter: CGPoint(x: 100, y: 100), radius: 70, startAngle: 0, endAngle: endAngle, clockwise: true)
+        self.path = changedPath.cgPath
     }
 }
 

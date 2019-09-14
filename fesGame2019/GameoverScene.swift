@@ -20,7 +20,7 @@ class GameoverScene: SKScene {
         self.backgroundColor = NSColor.black
         
         self.run(SKAction.wait(forDuration: 0.2), completion: {
-            let bgm = SKAudioNode(fileNamed: "Gameover.wav")
+            let bgm = SKAudioNode(fileNamed: "05GameOver.wav")
             bgm.autoplayLooped = true
             self.addChild(bgm)
         })
@@ -35,6 +35,7 @@ class GameoverScene: SKScene {
         self.addChild(gameover_str)
         
         // スコア表示
+        scores.append(score)
         let your_score = SKLabelNode()
         your_score.text = "Your Final Score is \(score)"
         your_score.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2)
@@ -43,7 +44,14 @@ class GameoverScene: SKScene {
         self.addChild(your_score)
         your_score.alpha = 0.0
         
-        
+        let highScore: Int = scores.max()!
+        let high_score = SKLabelNode()
+        high_score.text = "The highest score ever: \(highScore)"
+        high_score.position = CGPoint(x: self.view!.bounds.maxX / 2, y: 40)
+        high_score.fontSize = 20
+        high_score.fontName = "chalkduster"
+        self.addChild(high_score)
+        high_score.alpha = 0.0
         
         let wait = SKAction.wait(forDuration: 2.0)
         let down = SKAction.move(by: CGVector(dx: 0, dy: -50), duration: 0.2)
@@ -55,6 +63,7 @@ class GameoverScene: SKScene {
         let actions = SKAction.sequence([wait, SKAction.group([rotate, down]), SKAction.repeatForever(SKAction.group([fadeoutAnime, fadeinAnime]))])
         gameover_str.run(actions)
         your_score.run(SKAction.sequence([wait, SKAction.fadeAlpha(to: 1.0, duration: 1.0)]))
+        high_score.run(SKAction.sequence([wait, SKAction.fadeAlpha(to: 1.0, duration: 1.3)]))
         
         
         
@@ -64,25 +73,17 @@ class GameoverScene: SKScene {
     }
     
     override func keyDown(with event: NSEvent) {
-        scores.append(score)
+        
         score = 0   // ゲームオーバー画面でスコア管理を終了して初期値に戻す
         // スコアの集計をとってハイスコアを表示したいのだが……
         if progressFlag {
             switch event.keyCode {
-            case 1:
+            case 49:
                 let newscene = TitleScene(size: self.scene!.size)
                 let transanime = SKTransition.flipHorizontal(withDuration: 2)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill
                 self.view!.presentScene(newscene, transition: transanime)
-            default:
-                break
-            }
-        }
-    }
-    override func keyUp(with event: NSEvent) {
-        if progressFlag {
-            switch event.keyCode {
-            case 49:
+            case 1:
                 let scene = FirstPhaseScene(size: self.scene!.size)
                 let transanime = SKTransition.moveIn(with: .down, duration: 2)
                 scene.scaleMode = SKSceneScaleMode.aspectFill
@@ -93,4 +94,5 @@ class GameoverScene: SKScene {
             }
         }
     }
+
 }

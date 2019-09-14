@@ -27,13 +27,14 @@ class SecondPhaseScene: SKScene {
         
         for i in 0...5 {ZigZagNode(x: 0, y: 0 + 100 * i)}
         
-        let bgm = SKAudioNode(fileNamed: "secondPhase.wav")
+        let bgm = SKAudioNode(fileNamed: "03Jellypour.wav")
         self.addChild(bgm)
         
         physicsWorld.contactDelegate = self
         
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
         self.addChild(player)
+        player.addHPBar(in: self)
         
         let enemy = Jellypour(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100), player: self.player)
         
@@ -42,7 +43,8 @@ class SecondPhaseScene: SKScene {
             self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         })
         
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self)})
+        let (mx, my) = (self.view!.bounds.maxX, self.view!.bounds.maxY)
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: {_ in enemy.tearRain(in: self, mx: Int(mx), my: Int(my))})
     }
     
     func ZigZagNode(x: Int, y: Int) {

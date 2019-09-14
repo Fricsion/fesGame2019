@@ -23,14 +23,14 @@ class ThirdPhaseScene: SKScene {
         
         for i in 0...5 {ZigZagNode(x: 0, y: 0 + 100 * i)}
         
-        let bgm = SKAudioNode(fileNamed: "thirdPhase.mp3")
+        let bgm = SKAudioNode(fileNamed: "04JellyTheSparkle.wav")
         self.addChild(bgm)
 
         physicsWorld.contactDelegate = self
         
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
-        
         self.addChild(player)
+        player.addHPBar(in: self)
         
         let enemy = JellyTheSparkle(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100))
         self.run(SKAction.wait(forDuration: 3.0), completion: {
@@ -38,7 +38,7 @@ class ThirdPhaseScene: SKScene {
             self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         })
         
-        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: true, block: { _ in
+        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { _ in
             enemy.generateAttack(in: self)
             })
     }

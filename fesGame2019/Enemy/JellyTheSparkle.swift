@@ -43,12 +43,15 @@ class JellyTheSparkle: SKSpriteNode {
     }
     
     func generateAttack(in scene: SKScene) {
-        let pattern = Int.random(in: 1...2)
+        let pattern = Int.random(in: 1...3)
         switch pattern {
         case 1:
             radialBullet(in: scene)
         case 2:
             radialBullet2(in: scene, radius: 300)
+        case 3:
+            mowScatterBullet(in: scene)
+            self.run(SKAction.wait(forDuration: 4.0))
         default:
             break
         }
@@ -62,11 +65,13 @@ class JellyTheSparkle: SKSpriteNode {
         scene.addChild(bullet)
         if !invincibility {
             self.health -= 1
+            score += 200
         }
         if self.health <= 0 {
             if !self.defeatFlag {
                 self.defeatFlag = true
-                let newscene = TitleScene(size: self.scene!.size)
+                score += 3000
+                let newscene = GameclearScene(size: self.scene!.size)
                 newscene.scaleMode = SKSceneScaleMode.aspectFill
                 scene.view!.presentScene(newscene)
             }
@@ -111,6 +116,21 @@ class JellyTheSparkle: SKSpriteNode {
             let moveX = -cos(angleNow) * Double(speed)
             let moveY = -sin(angleNow) * Double(speed)
             let bullet = StraightBullet(def_pos: CGPoint(x: bulletX, y: bulletY), vector: CGVector(dx: moveX, dy: moveY))
+            scene.addChild(bullet)
+            i += 1
+        }
+    }
+    
+    func mowScatterBullet(in scene: SKScene) {
+        let def_pos = self.position
+        let angle = -Double.pi / 5.0
+        let speed = 100
+        var i = 0
+        while i <= 5 {
+            let angleNow = angle * Double(i)
+            let vectorX = cos(angleNow) * Double(speed)
+            let vectorY = sin(angleNow) * Double(speed)
+            let bullet = ScatterBullet(def_pos: def_pos, vector: CGVector(dx: vectorX, dy: vectorY), timing: 2.0, in: scene)
             scene.addChild(bullet)
             i += 1
         }

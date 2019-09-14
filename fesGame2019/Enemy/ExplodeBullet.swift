@@ -22,7 +22,7 @@ class ExplodeBullet: SKSpriteNode {
         super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 20, height: 20))
         self.position = def_pos
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 8)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.velocity = CGVector(dx: 0, dy: -200)
         self.physicsBody?.categoryBitMask = straightbulletBit

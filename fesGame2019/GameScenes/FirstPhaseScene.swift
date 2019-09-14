@@ -27,18 +27,52 @@ class FirstPhaseScene: SKScene {
         moveDistanceX = 0.0
         moveDistanceY = 0.0
         
+        let bgm = SKAudioNode(fileNamed: "02Jellyborne.wav")
+        self.addChild(bgm)
+        
         for i in 0...5 {ZigZagNode(x: 0, y: 0 + 100 * i)}
         physicsWorld.contactDelegate = self
         
         player.position = CGPoint(x: self.view!.bounds.maxX/2, y: (self.view!.bounds.maxY)/2 - 100)
         self.addChild(player)
+        player.addHPBar(in: self)
 
         let enemy = Jellyborne(def_pos: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 + 100))
         self.run(SKAction.wait(forDuration: 3.0), completion: {
             self.addChild(enemy)
             self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         })
+
+        let mx = self.view!.bounds.maxX
+        let my = self.view!.bounds.maxY
+        let upBlock = SKShapeNode(rect: CGRect(x: 0, y: self.view!.bounds.maxY, width: self.view!.bounds.maxX, height: 5))
+        let rightBlock = SKShapeNode(rect: CGRect(x: mx * 8/10, y: self.view!.bounds.maxY, width: 5, height: -self.view!.bounds.maxY))
+        let downBlock = SKShapeNode(rect: CGRect(x: 0, y: 0, width: self.view!.bounds.maxX, height: 5))
+        let leftBlock = SKShapeNode(rect: CGRect(x: mx * 2/10, y: self.view!.bounds.maxY, width: 5, height: -self.view!.bounds.maxY))
+        upBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.view!.bounds.maxX, height: 5))
+        rightBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: my))
+        downBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: mx, height: 5))
+        leftBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: my))
         
+        upBlock.physicsBody?.isDynamic = false
+        rightBlock.physicsBody?.isDynamic = false
+        downBlock.physicsBody?.isDynamic = false
+        leftBlock.physicsBody?.isDynamic = false
+
+        upBlock.physicsBody?.categoryBitMask = wallBit
+        
+        self.addChild(upBlock)
+        self.addChild(rightBlock)
+        self.addChild(downBlock)
+        self.addChild(leftBlock)
+        
+//        let messageView = SKView(frame: NSRect(x: 8/10 * mx, y: 0, width: 2/10 * mx, height: my))
+//        let messageScene = MessageWindow()
+//        messageScene.size = messageView.frame.size
+//        messageView.presentScene(messageScene)
+//        self.view!.addSubview(messageView)
+//        messageView.showsFPS = true
+//        messageView.showsNodeCount = true
     }
 
     func ZigZagNode(x: Int, y: Int) {

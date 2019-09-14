@@ -15,6 +15,8 @@ class Player: SKSpriteNode {
     var invincibility: Bool!
     var defeatFlag: Bool!
     
+    let hpBar: LifeIndicator = LifeIndicator()
+    
     init(def_pos: CGPoint) {
         
         var textures: [SKTexture] = []
@@ -41,9 +43,13 @@ class Player: SKSpriteNode {
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = false
         self.physicsBody?.categoryBitMask = playerBit
-        self.physicsBody?.collisionBitMask = 0
+        self.physicsBody?.collisionBitMask = wallBit
         self.physicsBody?.contactTestBitMask = 0
         
+    }
+    
+    func addHPBar(in scene: SKScene) {
+        scene.addChild(self.hpBar)
     }
     
     func move(x: Float, y: Float) {
@@ -97,6 +103,7 @@ class Player: SKSpriteNode {
             } else {
                 self.invincibility = true
                 self.health -= 10
+                self.hpBar.updateHealth(health: self.health)
                 print(self.health as Any)
                 
                 let se = SKAction.playSoundFileNamed("blink.mp3", waitForCompletion: false)

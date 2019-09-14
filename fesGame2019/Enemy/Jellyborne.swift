@@ -30,7 +30,7 @@ class Jellyborne: SKSpriteNode {
         super.init(texture: textures.first, color: NSColor.clear, size: CGSize(width: 200, height: 200))
         self.position = def_pos
         self.zRotation = CGFloat(Double.pi)
-        self.health = 20
+        self.health = 100
         self.durability = 1
         self.invincible = true  // 初期状態ではダメージが入らない
         self.defeatFlag = false
@@ -65,6 +65,7 @@ class Jellyborne: SKSpriteNode {
             self.texture = SKTextureAtlas(named: "Jellyborne").textureNamed("jellyborne3")
             self.durability -= 1
             self.health -= 10
+            score += 100
             print(self.health as Any)
             if self.durability <= 0 {
                 prostrate()
@@ -84,6 +85,7 @@ class Jellyborne: SKSpriteNode {
             // Jellyborne撃破後のフロー
             if !self.defeatFlag {
                 self.defeatFlag = true
+                score += 1000
                 self.run(SKAction.playSoundFileNamed("don.mp3", waitForCompletion: true))
                 let newscene = SecondPhaseScene(size: self.scene!.size)
                 let transanime = SKTransition.moveIn(with: .down, duration: 2)

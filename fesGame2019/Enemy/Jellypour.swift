@@ -53,7 +53,7 @@ class Jellypour: SKSpriteNode {
         scene.addChild(bullet)
     }
     
-    func tearRain(in scene: SKScene) {
+    func tearRain(in scene: SKScene, mx: Int, my: Int) {
         var textures: [SKTexture] = []
         let atlas = SKTextureAtlas(named: "Jellypour")
         for i in 4...5 {
@@ -64,9 +64,8 @@ class Jellypour: SKSpriteNode {
         
         var tearCount = 0
         while tearCount <= 50 {
-//            let (x, y) = (Int.random(in: 0..<Int(scene.view!.bounds.maxX)), Int.random(in: Int(scene.view!.bounds.maxY)..<Int(scene.view!.bounds.maxY) + 200))
-            let (x, y) = (Int.random(in: 0..<800), Int.random(in: 600..<800))
-            let dy = Int.random(in: 200..<300)
+            let (x, y) = (Int.random(in: 0..<mx), Int.random(in: my..<my + 200))
+            let dy = Int.random(in: 200..<250)
             let tear = StraightBullet(def_pos: CGPoint(x: x, y: y), vector: CGVector(dx: 0, dy: -dy))
             scene.addChild(tear)
             tearCount += 1
@@ -80,11 +79,13 @@ class Jellypour: SKSpriteNode {
         fire(in: scene)
         
         if !invincibility {
-            self.health -= 10
+            self.health -= 1
+            score += 150
         }
         if self.health <= 0 {
             if !self.defeatFlag {
                 self.defeatFlag = true
+                score += 1500
                 self.run(SKAction.playSoundFileNamed("don.mp3", waitForCompletion: true))
                 let newscene = ThirdPhaseScene(size: self.scene!.size)
                 let transanime = SKTransition.moveIn(with: .down, duration: 2)

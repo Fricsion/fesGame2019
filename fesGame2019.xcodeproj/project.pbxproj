@@ -10,7 +10,6 @@
 		280ED588232749D100C78D14 /* ExplodeBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 280ED587232749D100C78D14 /* ExplodeBullet.swift */; };
 		280F165F231D5B0600CA206D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 280F165E231D5B0600CA206D /* Assets.xcassets */; };
 		2812EB4F2326A16900BE245A /* HomingBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2812EB4E2326A16900BE245A /* HomingBullet.swift */; };
-		2832D67C2327827A0099F4ED /* secondPhase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2832D67B2327827A0099F4ED /* secondPhase.wav */; };
 		2832D67E232789450099F4ED /* ThirdPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2832D67D232789450099F4ED /* ThirdPhaseScene.swift */; };
 		2832D68A2327E8110099F4ED /* teardrop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D67F2327E8100099F4ED /* teardrop.mp3 */; };
 		2832D68B2327E8110099F4ED /* touch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D6802327E8100099F4ED /* touch.mp3 */; };
@@ -29,15 +28,17 @@
 		2832D69D2327F65A0099F4ED /* puyon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2832D69B2327F65A0099F4ED /* puyon.mp3 */; };
 		28335E2523236F4C00887E73 /* Jellypour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2423236F4C00887E73 /* Jellypour.swift */; };
 		28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28335E2723237C0E00887E73 /* JellyTheSparkle.swift */; };
-		2889D0132328F48A0098EA9D /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2889D0122328F48A0098EA9D /* TravelViewController.swift */; };
-		2892E97B23253522009F5FE1 /* Gameover.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97823253522009F5FE1 /* Gameover.wav */; };
+		28754621232C910100D54B8F /* GameclearScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28754620232C910100D54B8F /* GameclearScene.swift */; };
+		288A5642232B44F600188CF8 /* ScatterBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288A5641232B44F600188CF8 /* ScatterBullet.swift */; };
+		288A5648232BDDEB00188CF8 /* 04JellyTheSparkle.wav in Resources */ = {isa = PBXBuildFile; fileRef = 288A5643232BDDEB00188CF8 /* 04JellyTheSparkle.wav */; };
+		288A5649232BDDEB00188CF8 /* 05GameOver.wav in Resources */ = {isa = PBXBuildFile; fileRef = 288A5644232BDDEB00188CF8 /* 05GameOver.wav */; };
+		288A564A232BDDEB00188CF8 /* 02Jellyborne.wav in Resources */ = {isa = PBXBuildFile; fileRef = 288A5645232BDDEB00188CF8 /* 02Jellyborne.wav */; };
+		288A564B232BDDEB00188CF8 /* 03Jellypour.wav in Resources */ = {isa = PBXBuildFile; fileRef = 288A5646232BDDEB00188CF8 /* 03Jellypour.wav */; };
+		288A564C232BDDEB00188CF8 /* 01Jelly.wav in Resources */ = {isa = PBXBuildFile; fileRef = 288A5647232BDDEB00188CF8 /* 01Jelly.wav */; };
 		2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97923253522009F5FE1 /* bubble_burst.mp3 */; };
-		2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2892E97A23253522009F5FE1 /* title_bgm.mp3 */; };
 		28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */; };
 		28930F722324E7EF009D3EC7 /* StraightBullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28930F712324E7EF009D3EC7 /* StraightBullet.swift */; };
 		28A760BD231A3879005276CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760BC231A3879005276CF /* AppDelegate.swift */; };
-		28A760BF231A3879005276CF /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760BE231A3879005276CF /* GameScene.sks */; };
-		28A760C1231A3879005276CF /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 28A760C0231A3879005276CF /* Actions.sks */; };
 		28A760C3231A3879005276CF /* FirstPhaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760C2231A3879005276CF /* FirstPhaseScene.swift */; };
 		28A760C5231A3879005276CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A760C4231A3879005276CF /* ViewController.swift */; };
 		28A760CA231A387A005276CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28A760C8231A387A005276CF /* Main.storyboard */; };
@@ -48,14 +49,12 @@
 		28B0101E232017E300331CE7 /* GameoverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0101D232017E300331CE7 /* GameoverScene.swift */; };
 		28B0102023201AA500331CE7 /* MessageWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0101F23201AA500331CE7 /* MessageWindow.swift */; };
 		28B0102223223FA500331CE7 /* TravelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B0102123223FA500331CE7 /* TravelScene.swift */; };
-		28CBC96623295704007A80EB /* thirdPhase.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 28CBC96523295704007A80EB /* thirdPhase.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		280ED587232749D100C78D14 /* ExplodeBullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExplodeBullet.swift; sourceTree = "<group>"; };
 		280F165E231D5B0600CA206D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2812EB4E2326A16900BE245A /* HomingBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomingBullet.swift; sourceTree = "<group>"; };
-		2832D67B2327827A0099F4ED /* secondPhase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = secondPhase.wav; sourceTree = "<group>"; };
 		2832D67D232789450099F4ED /* ThirdPhaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPhaseScene.swift; sourceTree = "<group>"; };
 		2832D67F2327E8100099F4ED /* teardrop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = teardrop.mp3; sourceTree = "<group>"; };
 		2832D6802327E8100099F4ED /* touch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = touch.mp3; sourceTree = "<group>"; };
@@ -74,16 +73,18 @@
 		2832D69B2327F65A0099F4ED /* puyon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = puyon.mp3; sourceTree = "<group>"; };
 		28335E2423236F4C00887E73 /* Jellypour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jellypour.swift; sourceTree = "<group>"; };
 		28335E2723237C0E00887E73 /* JellyTheSparkle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyTheSparkle.swift; sourceTree = "<group>"; };
-		2889D0122328F48A0098EA9D /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
-		2892E97823253522009F5FE1 /* Gameover.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Gameover.wav; sourceTree = "<group>"; };
+		28754620232C910100D54B8F /* GameclearScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameclearScene.swift; sourceTree = "<group>"; };
+		288A5641232B44F600188CF8 /* ScatterBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScatterBullet.swift; sourceTree = "<group>"; };
+		288A5643232BDDEB00188CF8 /* 04JellyTheSparkle.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 04JellyTheSparkle.wav; sourceTree = "<group>"; };
+		288A5644232BDDEB00188CF8 /* 05GameOver.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 05GameOver.wav; sourceTree = "<group>"; };
+		288A5645232BDDEB00188CF8 /* 02Jellyborne.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 02Jellyborne.wav; sourceTree = "<group>"; };
+		288A5646232BDDEB00188CF8 /* 03Jellypour.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 03Jellypour.wav; sourceTree = "<group>"; };
+		288A5647232BDDEB00188CF8 /* 01Jelly.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 01Jelly.wav; sourceTree = "<group>"; };
 		2892E97923253522009F5FE1 /* bubble_burst.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bubble_burst.mp3; sourceTree = "<group>"; };
-		2892E97A23253522009F5FE1 /* title_bgm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = title_bgm.mp3; sourceTree = "<group>"; };
 		28930F6E2324E565009D3EC7 /* SecondPhaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondPhaseScene.swift; sourceTree = "<group>"; };
 		28930F712324E7EF009D3EC7 /* StraightBullet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StraightBullet.swift; sourceTree = "<group>"; };
 		28A760B9231A3879005276CF /* fesGame2019.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fesGame2019.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28A760BC231A3879005276CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		28A760BE231A3879005276CF /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		28A760C0231A3879005276CF /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		28A760C2231A3879005276CF /* FirstPhaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPhaseScene.swift; sourceTree = "<group>"; };
 		28A760C4231A3879005276CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		28A760C9231A387A005276CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,7 +97,6 @@
 		28B0101D232017E300331CE7 /* GameoverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameoverScene.swift; sourceTree = "<group>"; };
 		28B0101F23201AA500331CE7 /* MessageWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageWindow.swift; sourceTree = "<group>"; };
 		28B0102123223FA500331CE7 /* TravelScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelScene.swift; sourceTree = "<group>"; };
-		28CBC96523295704007A80EB /* thirdPhase.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = thirdPhase.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +138,7 @@
 				28930F712324E7EF009D3EC7 /* StraightBullet.swift */,
 				2812EB4E2326A16900BE245A /* HomingBullet.swift */,
 				280ED587232749D100C78D14 /* ExplodeBullet.swift */,
+				288A5641232B44F600188CF8 /* ScatterBullet.swift */,
 				28335E2723237C0E00887E73 /* JellyTheSparkle.swift */,
 				28335E2423236F4C00887E73 /* Jellypour.swift */,
 				28A760D4231A3AC5005276CF /* Jellyborne.swift */,
@@ -148,11 +149,12 @@
 		2892E977232534FA009F5FE1 /* Audiofiles */ = {
 			isa = PBXGroup;
 			children = (
+				288A5647232BDDEB00188CF8 /* 01Jelly.wav */,
+				288A5645232BDDEB00188CF8 /* 02Jellyborne.wav */,
+				288A5646232BDDEB00188CF8 /* 03Jellypour.wav */,
+				288A5643232BDDEB00188CF8 /* 04JellyTheSparkle.wav */,
+				288A5644232BDDEB00188CF8 /* 05GameOver.wav */,
 				2832D6952327E81E0099F4ED /* SE */,
-				2892E97A23253522009F5FE1 /* title_bgm.mp3 */,
-				2832D67B2327827A0099F4ED /* secondPhase.wav */,
-				28CBC96523295704007A80EB /* thirdPhase.mp3 */,
-				2892E97823253522009F5FE1 /* Gameover.wav */,
 			);
 			path = Audiofiles;
 			sourceTree = "<group>";
@@ -187,19 +189,17 @@
 			isa = PBXGroup;
 			children = (
 				28A760BC231A3879005276CF /* AppDelegate.swift */,
-				28A760BE231A3879005276CF /* GameScene.sks */,
-				28A760C0231A3879005276CF /* Actions.sks */,
 				2832D6982327EF9E0099F4ED /* global.swift */,
 				28A760D8231A481E005276CF /* TitleScene.swift */,
 				28B0102123223FA500331CE7 /* TravelScene.swift */,
 				28930F702324E578009D3EC7 /* GameScenes */,
 				28B0101D232017E300331CE7 /* GameoverScene.swift */,
+				28754620232C910100D54B8F /* GameclearScene.swift */,
 				28B0101F23201AA500331CE7 /* MessageWindow.swift */,
 				28A760D2231A3991005276CF /* Player.swift */,
 				28335E2623237BDF00887E73 /* Enemy */,
 				28A760D6231A423A005276CF /* LifeIndicator.swift */,
 				28A760C4231A3879005276CF /* ViewController.swift */,
-				2889D0122328F48A0098EA9D /* TravelViewController.swift */,
 				280F165E231D5B0600CA206D /* Assets.xcassets */,
 				28A760C8231A387A005276CF /* Main.storyboard */,
 				2892E977232534FA009F5FE1 /* Audiofiles */,
@@ -267,28 +267,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288A564C232BDDEB00188CF8 /* 01Jelly.wav in Resources */,
 				2832D68C2327E8110099F4ED /* boyon.mp3 in Resources */,
-				2832D67C2327827A0099F4ED /* secondPhase.wav in Resources */,
 				2892E97C23253522009F5FE1 /* bubble_burst.mp3 in Resources */,
-				2892E97B23253522009F5FE1 /* Gameover.wav in Resources */,
 				2832D68F2327E8110099F4ED /* switch.mp3 in Resources */,
 				2832D68D2327E8110099F4ED /* data-analysis1.mp3 in Resources */,
-				28A760BF231A3879005276CF /* GameScene.sks in Resources */,
-				28CBC96623295704007A80EB /* thirdPhase.mp3 in Resources */,
 				2832D68B2327E8110099F4ED /* touch.mp3 in Resources */,
 				2832D69D2327F65A0099F4ED /* puyon.mp3 in Resources */,
 				2832D68A2327E8110099F4ED /* teardrop.mp3 in Resources */,
+				288A564A232BDDEB00188CF8 /* 02Jellyborne.wav in Resources */,
 				2832D6912327E8110099F4ED /* blink.mp3 in Resources */,
 				2832D6932327E8110099F4ED /* suck.mp3 in Resources */,
-				28A760C1231A3879005276CF /* Actions.sks in Resources */,
 				28A760CA231A387A005276CF /* Main.storyboard in Resources */,
 				2832D6922327E8110099F4ED /* don.mp3 in Resources */,
 				2832D68E2327E8110099F4ED /* tirin.mp3 in Resources */,
+				288A5648232BDDEB00188CF8 /* 04JellyTheSparkle.wav in Resources */,
 				2832D6972327EC580099F4ED /* jellyDie.wav in Resources */,
 				2832D69C2327F65A0099F4ED /* smoke.mp3 in Resources */,
-				2892E97D23253522009F5FE1 /* title_bgm.mp3 in Resources */,
 				280F165F231D5B0600CA206D /* Assets.xcassets in Resources */,
+				288A5649232BDDEB00188CF8 /* 05GameOver.wav in Resources */,
 				2832D6942327E8110099F4ED /* stupid3.mp3 in Resources */,
+				288A564B232BDDEB00188CF8 /* 03Jellypour.wav in Resources */,
 				2832D6902327E8110099F4ED /* typewriter.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,13 +307,14 @@
 				28335E2823237C0E00887E73 /* JellyTheSparkle.swift in Sources */,
 				28A760D5231A3AC5005276CF /* Jellyborne.swift in Sources */,
 				2832D67E232789450099F4ED /* ThirdPhaseScene.swift in Sources */,
+				288A5642232B44F600188CF8 /* ScatterBullet.swift in Sources */,
 				28A760D9231A481E005276CF /* TitleScene.swift in Sources */,
 				2812EB4F2326A16900BE245A /* HomingBullet.swift in Sources */,
+				28754621232C910100D54B8F /* GameclearScene.swift in Sources */,
 				28A760C5231A3879005276CF /* ViewController.swift in Sources */,
 				28A760D7231A423A005276CF /* LifeIndicator.swift in Sources */,
 				2832D6992327EF9E0099F4ED /* global.swift in Sources */,
 				28A760C3231A3879005276CF /* FirstPhaseScene.swift in Sources */,
-				2889D0132328F48A0098EA9D /* TravelViewController.swift in Sources */,
 				28A760BD231A3879005276CF /* AppDelegate.swift in Sources */,
 				28930F6F2324E565009D3EC7 /* SecondPhaseScene.swift in Sources */,
 				28B0101E232017E300331CE7 /* GameoverScene.swift in Sources */,
