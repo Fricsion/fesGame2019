@@ -43,8 +43,7 @@ class FirstPhaseScene: SKScene {
             self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         })
 
-        let mx = self.view!.bounds.maxX
-        let my = self.view!.bounds.maxY
+        let (mx, my) = (self.view!.bounds.maxX, self.view!.bounds.maxY)
         let upBlock = SKShapeNode(rect: CGRect(x: 0, y: self.view!.bounds.maxY, width: self.view!.bounds.maxX, height: 5))
         let rightBlock = SKShapeNode(rect: CGRect(x: mx * 8/10, y: self.view!.bounds.maxY, width: 5, height: -self.view!.bounds.maxY))
         let downBlock = SKShapeNode(rect: CGRect(x: 0, y: 0, width: self.view!.bounds.maxX, height: 5))
@@ -66,15 +65,35 @@ class FirstPhaseScene: SKScene {
         self.addChild(downBlock)
         self.addChild(leftBlock)
         
-//        let messageView = SKView(frame: NSRect(x: 8/10 * mx, y: 0, width: 2/10 * mx, height: my))
-//        let messageScene = MessageWindow()
-//        messageScene.size = messageView.frame.size
-//        messageView.presentScene(messageScene)
-//        self.view!.addSubview(messageView)
-//        messageView.showsFPS = true
-//        messageView.showsNodeCount = true
+        showControlHelp(position: CGPoint(x: 9/10 * mx, y: 100), descriptionText: "to move around", custom: [1, 5])
+        showControlHelp(position: CGPoint(x: 9/10 * mx, y: 200), descriptionText: "to shoot", custom: [3, 4])
+        showControlHelp(position: CGPoint(x: 9/10 * mx, y: 300), descriptionText: "to sneak", custom: [1, 6])
     }
 
+    func showControlHelp(position: CGPoint, descriptionText: String, custom: [Int]) {
+        var textures: [SKTexture] = []
+        let altas = SKTextureAtlas(named: "Controller")
+        for i in 1...6 {textures.append(altas.textureNamed("controller"+String(i)))}
+        
+        let controller = SKSpriteNode(texture: textures.first)
+        let description = SKLabelNode()
+        controller.position = position
+        controller.alpha = 0.8
+        description.position = CGPoint(x: position.x, y: position.y - 40.0)
+        description.text = descriptionText
+        description.fontName = "chalkduster"
+        description.fontSize = 10
+        description.fontColor = NSColor.gray
+        
+        var animeTextures: [SKTexture] = []
+        for i in custom {animeTextures.append(textures[i - 1])}
+        controller.run(SKAction.repeatForever(SKAction.animate(with: animeTextures, timePerFrame: 0.5)))
+        
+        self.addChild(controller)
+        self.addChild(description)
+        
+    }
+    
     func ZigZagNode(x: Int, y: Int) {
         let scr_width = self.view!.bounds.maxX
         let scr_height = self.view!.bounds.maxY

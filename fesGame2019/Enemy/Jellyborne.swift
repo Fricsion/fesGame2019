@@ -86,12 +86,22 @@ class Jellyborne: SKSpriteNode {
             if !self.defeatFlag {
                 self.defeatFlag = true
                 score += 1000
-                self.run(SKAction.playSoundFileNamed("don.mp3", waitForCompletion: true))
-                let newscene = SecondPhaseScene(size: self.scene!.size)
-                let transanime = SKTransition.moveIn(with: .down, duration: 2)
-                newscene.scaleMode = .aspectFill
-                scene.view!.presentScene(newscene, transition: transanime)
-                scene.removeAllChildren()
+                let defeatText = SKLabelNode()
+                defeatText.text = "Vanquished"
+                defeatText.fontSize = 40
+                defeatText.fontName = "Chalkduster"
+                defeatText.position = self.position
+                defeatText.alpha = 0.0
+                scene.addChild(defeatText)
+                self.run(SKAction.group([SKAction.playSoundFileNamed("don.mp3", waitForCompletion: false), SKAction.fadeOut(withDuration: 0.2)]), completion: {
+                    defeatText.run(SKAction.sequence([SKAction.fadeIn(withDuration: 1.0), SKAction.wait(forDuration: 2.0)]), completion: {
+                        let newscene = SecondPhaseScene(size: self.scene!.size)
+                        let transanime = SKTransition.moveIn(with: .down, duration: 2)
+                        newscene.scaleMode = .aspectFill
+                        scene.view!.presentScene(newscene, transition: transanime)
+                        scene.removeAllChildren()
+                    })
+                })
             }
         }
     }

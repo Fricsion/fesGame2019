@@ -13,7 +13,7 @@ class LifeIndicator: SKShapeNode {
 
     override init() {
         let path = NSBezierPath.init()
-        path.appendArc(withCenter: CGPoint(x: 100, y: 100), radius: CGFloat(70), startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
+        path.appendArc(withCenter: CGPoint(x: 80, y: 80), radius: CGFloat(50), startAngle: 0, endAngle: CGFloat(Double.pi), clockwise: true)
         super.init()
         self.path = path.cgPath
         self.strokeColor = NSColor.green
@@ -31,12 +31,14 @@ class LifeIndicator: SKShapeNode {
         let changedPath = NSBezierPath()
         print(Double(health)/100.0)
         let endAngle: CGFloat = CGFloat(-360 * health/100)
-        changedPath.appendArc(withCenter: CGPoint(x: 100, y: 100), radius: 70, startAngle: 0, endAngle: endAngle, clockwise: true)
+        changedPath.appendArc(withCenter: CGPoint(x: 80, y: 80), radius: CGFloat(50), startAngle: 0, endAngle: endAngle, clockwise: true)
         self.path = changedPath.cgPath
         
         let popup = SKAction.fadeAlpha(to: 1.0, duration: 0.1)
         let fadeout = SKAction.fadeAlpha(to: 0.5, duration: 1.0)
         self.run(SKAction.sequence([popup, fadeout]))
+        let action = SKAction.move(by: CGVector(dx: 10, dy: 0), duration: 0.1)
+        self.run(SKAction.sequence([action, action.reversed()]))
     }
 }
 

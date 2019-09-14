@@ -38,6 +38,28 @@ class ThirdPhaseScene: SKScene {
             self.player.physicsBody?.contactTestBitMask = enemy.physicsBody!.categoryBitMask
         })
         
+        let (mx, my) = (self.view!.bounds.maxX, self.view!.bounds.maxY)
+        
+        let upBlock = SKShapeNode(rect: CGRect(x: 0, y: self.view!.bounds.maxY, width: self.view!.bounds.maxX, height: 5))
+        let rightBlock = SKShapeNode(rect: CGRect(x: mx * 8/10, y: self.view!.bounds.maxY, width: 5, height: -self.view!.bounds.maxY))
+        let downBlock = SKShapeNode(rect: CGRect(x: 0, y: 0, width: self.view!.bounds.maxX, height: 5))
+        let leftBlock = SKShapeNode(rect: CGRect(x: mx * 2/10, y: self.view!.bounds.maxY, width: 5, height: -self.view!.bounds.maxY))
+        upBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.view!.bounds.maxX, height: 5))
+        rightBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: my))
+        downBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: mx, height: 5))
+        leftBlock.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 5, height: my))
+        
+        upBlock.physicsBody?.isDynamic = false
+        rightBlock.physicsBody?.isDynamic = false
+        downBlock.physicsBody?.isDynamic = false
+        leftBlock.physicsBody?.isDynamic = false
+        
+        upBlock.physicsBody?.categoryBitMask = wallBit
+        
+        self.addChild(upBlock)
+        self.addChild(rightBlock)
+        self.addChild(downBlock)
+        self.addChild(leftBlock)
         Timer.scheduledTimer(withTimeInterval: 4.0, repeats: true, block: { _ in
             enemy.generateAttack(in: self)
             })

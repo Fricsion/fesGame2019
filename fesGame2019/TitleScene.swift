@@ -28,6 +28,7 @@ class TitleScene: SKScene {
         self.addChild(bgm)
         
         generateTitlelogo()
+        showControlHelp(position: CGPoint(x: self.view!.bounds.maxX/2, y: self.view!.bounds.maxY/2 - 200), descriptionText: "Press L & R to Play!")
 
     }
     
@@ -43,6 +44,28 @@ class TitleScene: SKScene {
         let actions = SKAction.sequence([fadeoutAnime, fadeinAnime])
         gametitle_str.run(SKAction.repeatForever(actions))
         self.addChild(gametitle_str)
+    }
+    
+    func showControlHelp(position: CGPoint, descriptionText: String) {
+        var textures: [SKTexture] = []
+        let altas = SKTextureAtlas(named: "Controller")
+        for i in 1...6 {textures.append(altas.textureNamed("controller"+String(i)))}
+        
+        let controller = SKSpriteNode(texture: textures.first)
+        let description = SKLabelNode()
+        controller.position = position
+        controller.alpha = 0.8
+        description.position = CGPoint(x: position.x, y: position.y - 70.0)
+        description.text = descriptionText
+        description.fontName = "chalkduster"
+        description.fontSize = 15
+        description.fontColor = NSColor.gray
+        
+        controller.run(SKAction.repeatForever(SKAction.animate(with: [textures[0], textures[1]], timePerFrame: 0.5)))
+        
+        self.addChild(controller)
+        self.addChild(description)
+        
     }
     
     func generateBubble() {
