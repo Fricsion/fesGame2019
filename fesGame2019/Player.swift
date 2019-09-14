@@ -80,6 +80,7 @@ class Player: SKSpriteNode {
             if self.health <= 0 {
                 if !self.defeatFlag {
                     self.defeatFlag = true
+                    self.hpBar.updateHealth(health: self.health)
                     let se = SKAction.playSoundFileNamed("jellyDie.wav", waitForCompletion: false)
                 // 通常時のアニメーションを止める（消す）
                 self.removeAction(forKey: "Normal")

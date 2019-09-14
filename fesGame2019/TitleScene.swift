@@ -105,7 +105,7 @@ class TitleScene: SKScene {
             let transanime = SKTransition.moveIn(with: .down, duration: 2)
 //            let scene = TravelScene(size: self.scene!.size)
 //            let scene = GameoverScene(size: self.scene!.size)
-            scene.scaleMode = SKSceneScaleMode.aspectFill
+            scene.scaleMode = .aspectFill
             self.view!.presentScene(scene, transition: transanime)
         }
     }

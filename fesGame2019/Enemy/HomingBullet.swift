@@ -32,6 +32,7 @@ class HomingBullet: SKSpriteNode {
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 8)
         self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.velocity = CGVector(dx: 0.0, dy: Double(speed))
         self.physicsBody?.categoryBitMask = straightbulletBit
         self.physicsBody?.collisionBitMask = 0
         self.physicsBody?.contactTestBitMask = playerBit
@@ -62,9 +63,24 @@ class HomingBullet: SKSpriteNode {
         let (bx, by) = (self.position.x, self.position.y)
         let (rawVX, rawVY) = (px - bx, py - by)
         let adjestedVector = adjestVector(givenVector: CGVector(dx: rawVX, dy: rawVY), magnitude: CGFloat(speed))
+        
+        let (pdx, pdy) = (self.physicsBody!.velocity.dx, self.physicsBody!.velocity.dy)
+        let cosine = adjestedVector.dx * pdx + adjestedVector.dy * pdy
+        let rad = acos(cosine)
+        
+        if rad >= CGFloat(1.0/3.0 * Double.pi) {
+            let alpha = 1.0/3.0 * Double.pi
+            self.moveX = pdx * CGFloat(cos(alpha)) - pdy * CGFloat(sin(alpha))
+            self.moveY = pdx * CGFloat(sin(alpha)) + pdy * CGFloat(cos(alpha))
+        } else if rad <= CGFloat(-1.0/3.0 * Double.pi) {
+            let alpha = -1.0/3.0 * Double.pi
+            self.moveX = pdx * CGFloat(cos(alpha)) - pdy * CGFloat(sin(alpha))
+            self.moveY = pdx * CGFloat(sin(alpha)) + pdy * CGFloat(cos(alpha))
+        } else {
+            self.moveX = adjestedVector.dx
+            self.moveY = adjestedVector.dy
+        }
 
-        self.moveX = adjestedVector.dx
-        self.moveY = adjestedVector.dy
     }
     
     func update() {

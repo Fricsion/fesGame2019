@@ -89,8 +89,9 @@ class Jellypour: SKSpriteNode {
                 self.run(SKAction.playSoundFileNamed("don.mp3", waitForCompletion: true))
                 let newscene = ThirdPhaseScene(size: self.scene!.size)
                 let transanime = SKTransition.moveIn(with: .down, duration: 2)
-                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                newscene.scaleMode = .aspectFill
                 scene.view!.presentScene(newscene, transition: transanime)
+                scene.removeAllChildren()
             }
             
         }

@@ -72,7 +72,7 @@ class JellyTheSparkle: SKSpriteNode {
                 self.defeatFlag = true
                 score += 3000
                 let newscene = GameclearScene(size: self.scene!.size)
-                newscene.scaleMode = SKSceneScaleMode.aspectFill
+                newscene.scaleMode = .aspectFill
                 scene.view!.presentScene(newscene)
             }
             

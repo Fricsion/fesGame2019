@@ -19,6 +19,8 @@ class LifeIndicator: SKShapeNode {
         self.strokeColor = NSColor.green
         self.lineWidth = 30
         self.lineCap = .round
+        
+        self.alpha = 0.5
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,6 +33,10 @@ class LifeIndicator: SKShapeNode {
         let endAngle: CGFloat = CGFloat(-360 * health/100)
         changedPath.appendArc(withCenter: CGPoint(x: 100, y: 100), radius: 70, startAngle: 0, endAngle: endAngle, clockwise: true)
         self.path = changedPath.cgPath
+        
+        let popup = SKAction.fadeAlpha(to: 1.0, duration: 0.1)
+        let fadeout = SKAction.fadeAlpha(to: 0.5, duration: 1.0)
+        self.run(SKAction.sequence([popup, fadeout]))
     }
 }
 

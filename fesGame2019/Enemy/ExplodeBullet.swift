@@ -45,7 +45,7 @@ class ExplodeBullet: SKSpriteNode {
         let blink = SKAction.sequence([SKAction.fadeAlpha(to: 0.2, duration: 0.2),
                                        SKAction.fadeAlpha(to: 0.8, duration: 0.2)])
         let blinking = SKAction.repeat(blink, count: 2)
-        let explosion = SKAction.scale(by: 2.0, duration: 0.1)
+        let explosion = SKAction.scale(by: 5.0, duration: 0.1)
         let explosionAnime = SKAction.animate(with: Array(textures[3...4]), timePerFrame: 0.2)
         let explode = SKAction.group([explosion, explosionAnime])
         let wait = SKAction.wait(forDuration: 0.5)
